@@ -1,0 +1,144 @@
+{
+  "main": {
+    "name": "Brian Handy",
+    "occupation": "Software Engineer",
+    "description": ", currently employed by Amazon Web Services.",
+    "image": "profilepic.jpg",
+    "bio": "Use this bio section as your way of describing yourself and saying what you do, what technologies you like to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing in.",
+    "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
+    "email": "brianhandy02@gmail.com",
+    "phone": "443-896-8526",
+    "website": "https://brianhandy.io",
+    "resumedownload": "https://brianhandy.io/resume",
+    "social": [
+      {
+        "name": "facebook",
+        "url": "https://www.facebook.com/brian.handy.5/",
+        "className": "fa fa-facebook"
+      },
+      {
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/brian-handy-6b19b461/",
+        "className": "fa fa-linkedin"
+      },
+      {
+        "name": "instagram",
+        "url": "https://www.instagram.com/bhandy02/",
+        "className": "fa fa-instagram"
+      },
+      {
+        "name": "github",
+        "url": "https://github.com/bhandy02",
+        "className": "fa fa-github"
+      },
+      {
+        "name": "strava",
+        "url": "https://www.strava.com/athletes/67293064",
+        "className": "fa fa-twitter"
+      }
+    ]
+  },
+  "resume": {
+    "skillmessage": "Here you can create a short write-up of your skills to show off to employers",
+    "education": [
+      {
+        "school": "University of Maryland, College Park",
+        "degree": "Bachelors of Science in Computer Science & Bachelors of Engineering in Electrical Engineering with Honors",
+        "graduated": "December 2016",
+        "description": "At Maryland I originally intended to graduate with just a bachelor's degree in Electrical Engineering. Shortly after I started Electrical Engineering, I decided to pick up a minor in Computer Science as well, as the majority of engineering jobs that I saw or heard about required coding skills. Then, at the beginning of my senior year, while taking my first Algorithms course, I realized that my real passion was in Computer Science. So, I turned computer science into a second major and took a little of bit extra time to get both degrees."
+      }
+    ],
+    "work": [
+      {
+        "company": "Amazon Web Services",
+        "title": "Software Development Engineer II",
+        "years": "March 2017 - Present",
+        "description": "Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+      }
+    ],
+    "skills": [
+      {
+        "name": "AWS",
+        "level": "90%"
+      },
+      {
+        "name": "Java",
+        "level": "90%"
+      },
+      {
+        "name": "Git",
+        "level": "60%"
+      },
+      {
+        "name": "ReactJs",
+        "level": "70%"
+      },
+      {
+        "name": "CSS",
+        "level": "90%"
+      },
+      {
+        "name": "HTML5",
+        "level": "80%"
+      },
+      {
+        "name": "AngularJS",
+        "level": "50%"
+      },
+      {
+        "name": "MongoDB",
+        "level": "70%"
+      },
+      {
+        "name": "Redis",
+        "level": "80%"
+      }
+    ]
+  },
+  "portfolio": {
+    "projects": [
+      {
+        "title": "Canadian Wanderlust",
+        "category": "My Travel Blog for my post-university travels",
+        "image": "canadian-wanderlust.jpg",
+        "url": "https://www.canadianwanderlust.com"
+      },
+      {
+        "title": "Fury Fighting Gear",
+        "category": "(offline now) A fighting gear company I started",
+        "image": "fury-fighting-gear.jpg",
+        "url": "http://www.timbakerdev.com"
+      },
+      {
+        "title": "Original Thai Food",
+        "category": "Website I built for a restaurant I like in Thailand",
+        "image": "original-thai-food.jpg",
+        "url": "http://www.timbakerdev.com/originalthaifood.github.io"
+      },
+      {
+        "title": "Resume Website",
+        "category": "A React based resume website template",
+        "image": "resume-website.jpg",
+        "url": "http://www.timbakerdev.com"
+      },
+      {
+        "title": "Smirkspace",
+        "category": "(MVP Only) A React and Meteor based chat University project.",
+        "image": "smirkspace.jpg",
+        "url": "http://www.smirkspace.com"
+      }
+    ]
+  },
+  "testimonials": {
+    "testimonials": [
+      {
+        "text": "Here you should write some nice things that someone has said about you. No lies though, employers can tell when you are lying.",
+        "user": "Kareem Abdul Jabbar"
+      },
+      {
+        "text": "That Brian Handy must be one of the most brilliant developers I've ever met! It is amazing that nobody has hired him yet. Hey you, you should hire this guy, he may be fresh out of University and have zero on the job experience but I am confident that he will be one of your best developers in no time!",
+        "user": "Steve Wozniak... impersonator"
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+import {Aws, CfnParameter, Construct, Fn, RemovalPolicy, Stack, Token, StackProps} from 'monocdk';
+import {Bucket, BucketEncryption, BlockPublicAccess, } from 'monocdk/aws-s3';
+import { PolicyStatement, AccountRootPrincipal } from 'monocdk/aws-iam';
+import {HostedZone, AaaaRecord, RecordTarget} from 'monocdk/aws-route53';
+import {CloudFrontTarget} from 'monocdk/aws-route53-targets';
+import { DnsValidatedCertificate, CertificateValidation } from 'monocdk/aws-certificatemanager';
+import {CodebuildWebsiteArtifactConfiguration, ArtifactCopyConfiguration} from './website-artifact-location-configuration';
+import {ArtifactCopyLambdaFunction} from './artifact-copy-lambda-function';
+import {
+    BehaviorOptions, CachePolicy,
+    CloudFrontAllowedMethods,
+    Distribution,
+    DistributionProps,
+    HttpVersion, IOrigin,
+    OriginAccessIdentity,
+    SourceConfiguration,
+    ViewerProtocolPolicy,
+    SecurityPolicyProtocol,
+    ViewerCertificate
+} from 'monocdk/aws-cloudfront';
+import {CloudfrontInvalidationFunction} from './cloudfront-invalidation-function'
+
+import {S3Origin} from 'monocdk/aws-cloudfront-origins';
+
+export interface StaticWebsiteProps {
+    websiteDomainName: string;
+    websiteArtifactCopyConfiguration: CodebuildWebsiteArtifactConfiguration;
+}
+
+export class StaticWebsite extends Construct {
+    readonly bucket: Bucket;
+    readonly distribution: Distribution;
+    readonly websiteDomainName: string;
+    constructor(parent: Construct, name: string, props: StaticWebsiteProps) {
+        super(parent, name);
+
+        this.websiteDomainName = props.websiteDomainName
+
+        const hostedZone = new HostedZone(this, 'HostedZone', {
+            zoneName: this.websiteDomainName
+        });
+
+        const certificate = new DnsValidatedCertificate(this, 'Certificate', {
+            domainName: this.websiteDomainName,
+            hostedZone: hostedZone,
+            validation: CertificateValidation.fromDns(hostedZone)
+        });
+
+        this.bucket = new Bucket(this, 'WebsiteBucket', {
+            bucketName: 'brian-handy-personal-website',
+            encryption: BucketEncryption.S3_MANAGED,
+            blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+            versioned: true,
+            websiteIndexDocument: 'index.html',
+            websiteErrorDocument: 'index.html',
+            removalPolicy: RemovalPolicy.RETAIN,
+        });
+
+        const originAccessIdentity = new OriginAccessIdentity(this, 'OAI', {
+            comment: 'OAI for accessing static website assets in S3.'
+        });
+
+        const cloudfrontS3AccessPolicy = new PolicyStatement();
+        cloudfrontS3AccessPolicy.addActions('s3:GetBucket*', 's3:GetObject*', 's3:List*');
+        cloudfrontS3AccessPolicy.addResources(this.bucket.bucketArn, `${this.bucket.bucketArn}/*`);
+        cloudfrontS3AccessPolicy.addCanonicalUserPrincipal(originAccessIdentity.cloudFrontOriginAccessIdentityS3CanonicalUserId);
+        this.bucket.addToResourcePolicy(cloudfrontS3AccessPolicy);
+        this.bucket.addToResourcePolicy(
+            new PolicyStatement({
+                actions: ['s3:*'],
+                principals: [new AccountRootPrincipal()],
+                resources: [this.bucket.arnForObjects('*'), this.bucket.bucketArn],
+
+
+            }),
+        );
+
+        const distribution = new Distribution(this, 'Distribution', {
+            defaultRootObject: 'index.html',
+            certificate: certificate,
+            domainNames: [this.websiteDomainName],
+            enabled: true,
+            httpVersion: HttpVersion.HTTP2,
+            enableLogging: false,
+            enableIpv6: true,
+            defaultBehavior: {origin: new S3Origin(this.bucket), viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS}
+        });
+
+        const recordSet = new AaaaRecord(this, 'RecordSet', {
+            zone: hostedZone,
+            target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
+            recordName: 'CloudfrontAliasRecord'
+        })
+        
+        
+        
+        new CloudfrontInvalidationFunction(this, 'CloudfrontInvalidationFunction', {
+            distributionId: distribution.distributionId
+        })
+
+
+        new ArtifactCopyLambdaFunction(this, 'ArtifactCopyLambdaFunction', {
+            destBucket: this.bucket,
+            sourceBucket: props.websiteArtifactCopyConfiguration.websiteCopyConfiguration().sourceBucket,
+            sourceKey: props.websiteArtifactCopyConfiguration.websiteCopyConfiguration().sourceKey,
+            zipSubFolder: props.websiteArtifactCopyConfiguration.websiteCopyConfiguration().zipSubFolder
+        })
+    }
+
+}
+
