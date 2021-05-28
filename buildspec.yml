@@ -10,7 +10,7 @@ phases:
       - yarn
   build:
     commands:
-      - cd packages/personal-websitels
+      - cd packages/personal-website
       - yarn install && yarn build
       - cd ../..
       - cd packages/cdk
