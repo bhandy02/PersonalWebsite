@@ -1,0 +1,22 @@
+version: 0.2
+
+env:
+  variables:
+    CI: "true"
+
+phases:
+  pre_build:
+    commands:
+      - yarn
+  build:
+    commands:
+      - cd packages/personal-websitels
+      - yarn install && yarn build
+      - cd ../..
+      - cd packages/cdk
+      - yarn install && yarn build
+artifacts:
+  base-directory: packages
+  files:
+    - "cdk/build/**/*"
+    - "personal-website/build/**/*"

@@ -1,0 +1,1476 @@
+{
+  "version": "11.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "BuildStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://552063170091/us-east-1",
+      "properties": {
+        "templateFile": "BuildStack.template.json",
+        "validateOnSynth": false
+      },
+      "metadata": {
+        "/BuildStack/Pipeline/ArtifactsBucketEncryptionKey/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineArtifactsBucketEncryptionKey01D58D69",
+            "trace": [
+              "new Key (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-kms/lib/key.ts:488:26)",
+              "new Pipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:230:33)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:42:26)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/ArtifactsBucketEncryptionKeyAlias/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineArtifactsBucketEncryptionKeyAlias5C510EEE",
+            "trace": [
+              "new Alias (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-kms/lib/alias.ts:168:26)",
+              "new Pipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:236:17)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:42:26)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/ArtifactsBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineArtifactsBucket22248F97",
+            "trace": [
+              "new Bucket (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3/lib/bucket.ts:1188:26)",
+              "new Pipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:242:27)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:42:26)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/ArtifactsBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineArtifactsBucketPolicyD4F9712A",
+            "trace": [
+              "new BucketPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3/lib/bucket-policy.ts:34:25)",
+              "Bucket.addToResourcePolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3/lib/bucket.ts:454:27)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:45:33)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineRoleD68726F7",
+            "trace": [
+              "new Role (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:295:22)",
+              "new Pipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:252:35)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:42:26)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineRoleDefaultPolicyC7A05455",
+            "trace": [
+              "new Policy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/policy.ts:136:26)",
+              "Role.addToPrincipalPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:335:34)",
+              "Function.addToPrincipal (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/grant.ts:148:65)",
+              "Function.addToPrincipalOrResource (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/grant.ts:105:30)",
+              "Bucket.grant (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3/lib/bucket.ts:636:31)",
+              "Bucket.grantReadWrite (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3/lib/bucket.ts:576:21)",
+              "new Pipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:265:29)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:42:26)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineC660917D",
+            "trace": [
+              "new Pipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:255:30)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:42:26)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/Source/source-code-push-from-github/WebhookResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineSourcesourcecodepushfromgithubWebhookResourceAE735C09",
+            "trace": [
+              "GitHubSourceAction.bound (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/github/source-action.ts:117:13)",
+              "GitHubSourceAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/action.ts:287:21)",
+              "RichAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/rich-action.ts:26:28)",
+              "Pipeline._attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:362:41)",
+              "Stage.attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:118:31)",
+              "Stage.addAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:77:33)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:77:25)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/build/build/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebuildCodePipelineActionRole11BCD4FF",
+            "trace": [
+              "new Role (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:295:22)",
+              "Pipeline.getRoleForAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:510:26)",
+              "Pipeline._attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:358:33)",
+              "Stage.attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:118:31)",
+              "Stage.addAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:77:33)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:94:20)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/build/build/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelinebuildCodePipelineActionRoleDefaultPolicyDC80DBC3",
+            "trace": [
+              "new Policy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/policy.ts:136:26)",
+              "Role.addToPrincipalPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:335:34)",
+              "Role.addToPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:342:21)",
+              "CodeBuildAction.bound (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/codebuild/build-action.ts:140:22)",
+              "CodeBuildAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/action.ts:287:21)",
+              "RichAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/rich-action.ts:26:28)",
+              "Pipeline._attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:362:41)",
+              "Stage.attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:118:31)",
+              "Stage.addAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:77:33)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:94:20)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/Update-production/CreateChangeSet-production-us-east-1/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineUpdateproductionCreateChangeSetproductionuseast1CodePipelineActionRole0F6CF97B",
+            "trace": [
+              "new Role (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:295:22)",
+              "Pipeline.getRoleForAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:510:26)",
+              "Pipeline._attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:358:33)",
+              "Stage.attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:118:31)",
+              "Stage.addAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:77:33)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:107:36",
+              "Array.forEach (<anonymous>)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:105:41",
+              "Array.forEach (<anonymous>)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:103:43)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/Update-production/CreateChangeSet-production-us-east-1/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineUpdateproductionCreateChangeSetproductionuseast1CodePipelineActionRoleDefaultPolicy8E733D05",
+            "trace": [
+              "new Policy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/policy.ts:136:26)",
+              "Role.addToPrincipalPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:335:34)",
+              "Role.addToPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:342:21)",
+              "SingletonPolicy.statementFor (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/cloudformation/pipeline-actions.ts:551:23)",
+              "SingletonPolicy.grantPassRole (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/cloudformation/pipeline-actions.ts:542:14)",
+              "CloudFormationCreateReplaceChangeSetAction.bound (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/cloudformation/pipeline-actions.ts:285:47)",
+              "CloudFormationCreateReplaceChangeSetAction.bound (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/cloudformation/pipeline-actions.ts:352:36)",
+              "CloudFormationCreateReplaceChangeSetAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/action.ts:287:21)",
+              "RichAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/rich-action.ts:26:28)",
+              "Pipeline._attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:362:41)",
+              "Stage.attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:118:31)",
+              "Stage.addAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:77:33)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:107:36",
+              "Array.forEach (<anonymous>)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:105:41",
+              "Array.forEach (<anonymous>)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:103:43)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/Update-production/CreateChangeSet-production-us-east-1/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineUpdateproductionCreateChangeSetproductionuseast1RoleC5B6FF25",
+            "trace": [
+              "new Role (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:295:22)",
+              "CloudFormationCreateReplaceChangeSetAction.bound (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/cloudformation/pipeline-actions.ts:268:40)",
+              "CloudFormationCreateReplaceChangeSetAction.bound (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/cloudformation/pipeline-actions.ts:352:36)",
+              "CloudFormationCreateReplaceChangeSetAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/action.ts:287:21)",
+              "RichAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/rich-action.ts:26:28)",
+              "Pipeline._attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:362:41)",
+              "Stage.attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:118:31)",
+              "Stage.addAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:77:33)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:107:36",
+              "Array.forEach (<anonymous>)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:105:41",
+              "Array.forEach (<anonymous>)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:103:43)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/Update-production/CreateChangeSet-production-us-east-1/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineUpdateproductionCreateChangeSetproductionuseast1RoleDefaultPolicy79DB7557",
+            "trace": [
+              "new Policy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/policy.ts:136:26)",
+              "Role.addToPrincipalPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:335:34)",
+              "Function.addToPrincipal (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/grant.ts:148:65)",
+              "Function.addToPrincipalOrResource (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/grant.ts:105:30)",
+              "Bucket.grant (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3/lib/bucket.ts:636:31)",
+              "Bucket.grantRead (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3/lib/bucket.ts:543:21)",
+              "CloudFormationCreateReplaceChangeSetAction.bound (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/cloudformation/pipeline-actions.ts:277:28)",
+              "CloudFormationCreateReplaceChangeSetAction.bound (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/cloudformation/pipeline-actions.ts:352:36)",
+              "CloudFormationCreateReplaceChangeSetAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/action.ts:287:21)",
+              "RichAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/rich-action.ts:26:28)",
+              "Pipeline._attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:362:41)",
+              "Stage.attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:118:31)",
+              "Stage.addAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:77:33)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:107:36",
+              "Array.forEach (<anonymous>)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:105:41",
+              "Array.forEach (<anonymous>)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:103:43)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/Update-production/ExecuteChangeSet-production-us-east-1/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineUpdateproductionExecuteChangeSetproductionuseast1CodePipelineActionRole3FDF4F2B",
+            "trace": [
+              "new Role (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:295:22)",
+              "Pipeline.getRoleForAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:510:26)",
+              "Pipeline._attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:358:33)",
+              "Stage.attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:118:31)",
+              "Stage.addAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:77:33)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:120:36",
+              "Array.forEach (<anonymous>)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:105:41",
+              "Array.forEach (<anonymous>)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:103:43)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/Pipeline/Update-production/ExecuteChangeSet-production-us-east-1/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PipelineUpdateproductionExecuteChangeSetproductionuseast1CodePipelineActionRoleDefaultPolicyADD71B33",
+            "trace": [
+              "new Policy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/policy.ts:136:26)",
+              "Role.addToPrincipalPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:335:34)",
+              "Role.addToPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:342:21)",
+              "SingletonPolicy.statementFor (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/cloudformation/pipeline-actions.ts:551:23)",
+              "SingletonPolicy.grantExecuteChangeSet (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/cloudformation/pipeline-actions.ts:487:14)",
+              "CloudFormationExecuteChangeSetAction.bound (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline-actions/lib/cloudformation/pipeline-actions.ts:114:47)",
+              "CloudFormationExecuteChangeSetAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/action.ts:287:21)",
+              "RichAction.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/rich-action.ts:26:28)",
+              "Pipeline._attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/pipeline.ts:362:41)",
+              "Stage.attachActionToPipeline (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:118:31)",
+              "Stage.addAction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codepipeline/lib/private/stage.ts:77:33)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:120:36",
+              "Array.forEach (<anonymous>)",
+              "/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:105:41",
+              "Array.forEach (<anonymous>)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:103:43)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/CodeBuildProject/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CodeBuildProjectRole2B162745",
+            "trace": [
+              "new Role (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:295:22)",
+              "new Project (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codebuild/lib/project.ts:792:35)",
+              "new PipelineProject (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codebuild/lib/pipeline-project.ts:12:9)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:86:25)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/CodeBuildProject/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CodeBuildProjectRoleDefaultPolicy66975658",
+            "trace": [
+              "new Policy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/policy.ts:136:26)",
+              "Role.addToPrincipalPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:335:34)",
+              "PipelineProject.addToRolePolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codebuild/lib/project.ts:199:23)",
+              "new Project (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codebuild/lib/project.ts:877:14)",
+              "new PipelineProject (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codebuild/lib/pipeline-project.ts:12:9)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:86:25)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/CodeBuildProject/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CodeBuildProject4B91CF3F",
+            "trace": [
+              "new Project (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codebuild/lib/project.ts:834:26)",
+              "new PipelineProject (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-codebuild/lib/pipeline-project.ts:12:9)",
+              "new BuildStack (/Users/binary/PersonalWebsite/packages/cdk/lib/build-stack.ts:86:25)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:26:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BuildStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/metadata-resource.ts:20:30)",
+              "/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:127:9",
+              "visit (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:183:9)",
+              "visit (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:180:9)",
+              "injectMetadataResources (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:116:5)",
+              "Object.synthesize (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:15:5)",
+              "App.synth (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stage.ts:160:29)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:33:5)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ]
+      },
+      "displayName": "BuildStack"
+    },
+    "PersonalWebsiteStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "PersonalWebsiteStack.template.json",
+        "validateOnSynth": false
+      },
+      "metadata": {
+        "/PersonalWebsiteStack": [
+          {
+            "type": "aws:cdk:asset",
+            "data": {
+              "path": "asset.7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4",
+              "id": "7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4",
+              "packaging": "zip",
+              "sourceHash": "7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4",
+              "s3BucketParameter": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3Bucket5BEBDCBE",
+              "s3KeyParameter": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC",
+              "artifactHashParameter": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4ArtifactHash5E28809B"
+            },
+            "trace": [
+              "ConstructNode.addMetadata (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/construct-compat.ts:399:94)",
+              "LegacyStackSynthesizer.doAddFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:148:29)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:66:25)",
+              "PersonalWebsiteStack.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack.ts:600:33)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:70:31)",
+              "new Asset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3-assets/lib/asset.ts:122:44)",
+              "AssetCode.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/code.ts:241:26)",
+              "new Function (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function.ts:515:33)",
+              "new DnsValidatedCertificate (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-certificatemanager/lib/dns-validated-certificate.ts:73:35)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:43:29)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/HostedZone/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteHostedZoneFF354E29",
+            "trace": [
+              "new HostedZone (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-route53/lib/hosted-zone.ts:137:26)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:39:28)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleC558C69B",
+            "trace": [
+              "new Role (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:295:22)",
+              "new Function (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function.ts:498:35)",
+              "new DnsValidatedCertificate (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-certificatemanager/lib/dns-validated-certificate.ts:73:35)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:43:29)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyBBEC5BA3",
+            "trace": [
+              "new Policy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/policy.ts:136:26)",
+              "Role.addToPrincipalPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:335:34)",
+              "Function.addToRolePolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function-base.ts:227:19)",
+              "new DnsValidatedCertificate (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-certificatemanager/lib/dns-validated-certificate.ts:80:27)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:43:29)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteCertificateCertificateRequestorFunction8DAF9CCF",
+            "trace": [
+              "new Function (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function.ts:555:39)",
+              "new DnsValidatedCertificate (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-certificatemanager/lib/dns-validated-certificate.ts:73:35)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:43:29)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteCertificateCertificateRequestorResource7C29CEF3",
+            "trace": [
+              "new CustomResource (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/custom-resource.ts:112:25)",
+              "new DnsValidatedCertificate (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-certificatemanager/lib/dns-validated-certificate.ts:92:29)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:43:29)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/WebsiteBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteWebsiteBucket0FD1C291",
+            "trace": [
+              "new Bucket (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3/lib/bucket.ts:1188:26)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:49:23)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/WebsiteBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteWebsiteBucketPolicy8C735E20",
+            "trace": [
+              "new BucketPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3/lib/bucket-policy.ts:34:25)",
+              "Bucket.addToResourcePolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3/lib/bucket.ts:454:27)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:67:21)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/OAI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteOAI19BF508D",
+            "trace": [
+              "new OriginAccessIdentity (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-cloudfront/lib/origin-access-identity.ts:94:25)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:59:38)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/Distribution/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteDistributionBAD21F75",
+            "trace": [
+              "new Distribution (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-cloudfront/lib/distribution.ts:249:30)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:78:30)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/RecordSet/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteRecordSet9CD5CEF4",
+            "trace": [
+              "new RecordSet (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-route53/lib/record-set.ts:188:27)",
+              "new AaaaRecord (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-route53/lib/record-set.ts:246:9)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:89:27)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/CloudfrontInvalidationFunction/CloudfrontInvalidationCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteCloudfrontInvalidationFunctionCloudfrontInvalidationCustomResource95B1AF7F",
+            "trace": [
+              "new CustomResource (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/custom-resource.ts:112:25)",
+              "new CloudfrontInvalidationFunction (/Users/binary/PersonalWebsite/packages/cdk/lib/cloudfront-invalidation-function.ts:78:9)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:97:9)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/ArtifactCopyLambdaFunction/CopyCustomResourceLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambdaServiceRole28AEF620",
+            "trace": [
+              "new Role (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:295:22)",
+              "new Function (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function.ts:498:35)",
+              "new ArtifactCopyLambdaFunction (/Users/binary/PersonalWebsite/packages/cdk/lib/artifact-copy-lambda-function.ts:49:28)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:102:9)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/ArtifactCopyLambdaFunction/CopyCustomResourceLambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambdaServiceRoleDefaultPolicy0D2CBC13",
+            "trace": [
+              "new Policy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/policy.ts:136:26)",
+              "Role.addToPrincipalPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:335:34)",
+              "Function.addToRolePolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function-base.ts:227:19)",
+              "new ArtifactCopyLambdaFunction (/Users/binary/PersonalWebsite/packages/cdk/lib/artifact-copy-lambda-function.ts:129:20)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:102:9)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/ArtifactCopyLambdaFunction/CopyCustomResourceLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambda411A6BE1",
+            "trace": [
+              "new Function (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function.ts:555:39)",
+              "new ArtifactCopyLambdaFunction (/Users/binary/PersonalWebsite/packages/cdk/lib/artifact-copy-lambda-function.ts:49:28)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:102:9)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/StaticWebsite/ArtifactCopyLambdaFunction/CopyCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResource7FFF908B",
+            "trace": [
+              "new CustomResource (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/custom-resource.ts:112:25)",
+              "new ArtifactCopyLambdaFunction (/Users/binary/PersonalWebsite/packages/cdk/lib/artifact-copy-lambda-function.ts:150:36)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:102:9)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/AssetParameters/7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4/S3Bucket": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3Bucket5BEBDCBE",
+            "trace": [
+              "new FileAssetParameters (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/asset-parameters.ts:12:36)",
+              "LegacyStackSynthesizer.doAddFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:135:22)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:66:25)",
+              "PersonalWebsiteStack.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack.ts:600:33)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:70:31)",
+              "new Asset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3-assets/lib/asset.ts:122:44)",
+              "AssetCode.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/code.ts:241:26)",
+              "new Function (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function.ts:515:33)",
+              "new DnsValidatedCertificate (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-certificatemanager/lib/dns-validated-certificate.ts:73:35)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:43:29)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/AssetParameters/7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4/S3VersionKey": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC",
+            "trace": [
+              "new FileAssetParameters (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/asset-parameters.ts:16:35)",
+              "LegacyStackSynthesizer.doAddFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:135:22)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:66:25)",
+              "PersonalWebsiteStack.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack.ts:600:33)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:70:31)",
+              "new Asset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3-assets/lib/asset.ts:122:44)",
+              "AssetCode.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/code.ts:241:26)",
+              "new Function (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function.ts:515:33)",
+              "new DnsValidatedCertificate (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-certificatemanager/lib/dns-validated-certificate.ts:73:35)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:43:29)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/AssetParameters/7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4/ArtifactHash": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4ArtifactHash5E28809B",
+            "trace": [
+              "new FileAssetParameters (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/asset-parameters.ts:20:38)",
+              "LegacyStackSynthesizer.doAddFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:135:22)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:66:25)",
+              "PersonalWebsiteStack.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack.ts:600:33)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stack-synthesizers/legacy.ts:70:31)",
+              "new Asset (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-s3-assets/lib/asset.ts:122:44)",
+              "AssetCode.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/code.ts:241:26)",
+              "new Function (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function.ts:515:33)",
+              "new DnsValidatedCertificate (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-certificatemanager/lib/dns-validated-certificate.ts:73:35)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:43:29)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/AWSCloudFrontPartitionHostedZoneIdMap": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AWSCloudFrontPartitionHostedZoneIdMap",
+            "trace": [
+              "Function.getHostedZoneId (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-route53-targets/lib/cloudfront-target.ts:22:13)",
+              "CloudFrontTarget.bind (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-route53-targets/lib/cloudfront-target.ts:38:44)",
+              "new RecordSet (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-route53/lib/record-set.ts:193:79)",
+              "new AaaaRecord (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-route53/lib/record-set.ts:246:9)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:89:27)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/InvalidateArtifactsea8342bb056e431a808da043d7d4a069/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "InvalidateArtifactsea8342bb056e431a808da043d7d4a069ServiceRoleADCF3905",
+            "trace": [
+              "new Role (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:295:22)",
+              "new Function (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function.ts:498:35)",
+              "SingletonFunction.ensureLambda (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/singleton-lambda.ts:117:16)",
+              "new SingletonFunction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/singleton-lambda.ts:51:36)",
+              "new CloudfrontInvalidationFunction (/Users/binary/PersonalWebsite/packages/cdk/lib/cloudfront-invalidation-function.ts:13:24)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:97:9)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/InvalidateArtifactsea8342bb056e431a808da043d7d4a069/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "InvalidateArtifactsea8342bb056e431a808da043d7d4a069ServiceRoleDefaultPolicy53AB78B9",
+            "trace": [
+              "new Policy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/policy.ts:136:26)",
+              "Role.addToPrincipalPolicy (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-iam/lib/role.ts:335:34)",
+              "new Function (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function.ts:513:23)",
+              "SingletonFunction.ensureLambda (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/singleton-lambda.ts:117:16)",
+              "new SingletonFunction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/singleton-lambda.ts:51:36)",
+              "new CloudfrontInvalidationFunction (/Users/binary/PersonalWebsite/packages/cdk/lib/cloudfront-invalidation-function.ts:13:24)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:97:9)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/InvalidateArtifactsea8342bb056e431a808da043d7d4a069/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "InvalidateArtifactsea8342bb056e431a808da043d7d4a0696A64990F",
+            "trace": [
+              "new Function (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/function.ts:555:39)",
+              "SingletonFunction.ensureLambda (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/singleton-lambda.ts:117:16)",
+              "new SingletonFunction (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/aws-lambda/lib/singleton-lambda.ts:51:36)",
+              "new CloudfrontInvalidationFunction (/Users/binary/PersonalWebsite/packages/cdk/lib/cloudfront-invalidation-function.ts:13:24)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:97:9)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/CodeBuildBucket": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CodeBuildBucket",
+            "trace": [
+              "CodebuildArtifactLocationProvider.bucket (/Users/binary/PersonalWebsite/packages/cdk/lib/website-artifact-location-configuration.ts:28:23)",
+              "CodebuildWebsiteArtifactConfiguration.websiteCopyConfiguration (/Users/binary/PersonalWebsite/packages/cdk/lib/website-artifact-location-configuration.ts:60:58)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:104:66)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/CodeBuildKey": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CodeBuildKey",
+            "trace": [
+              "CodebuildArtifactLocationProvider.key (/Users/binary/PersonalWebsite/packages/cdk/lib/website-artifact-location-configuration.ts:39:20)",
+              "CodebuildWebsiteArtifactConfiguration.websiteCopyConfiguration (/Users/binary/PersonalWebsite/packages/cdk/lib/website-artifact-location-configuration.ts:61:55)",
+              "new StaticWebsite (/Users/binary/PersonalWebsite/packages/cdk/lib/static-website.ts:104:66)",
+              "new PersonalWebsiteStack (/Users/binary/PersonalWebsite/packages/cdk/lib/personal-website-stack.ts:9:9)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:31:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/metadata-resource.ts:20:30)",
+              "/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:127:9",
+              "visit (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:183:9)",
+              "visit (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:180:9)",
+              "injectMetadataResources (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:116:5)",
+              "Object.synthesize (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:15:5)",
+              "App.synth (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stage.ts:160:29)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:33:5)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/PersonalWebsiteStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable",
+            "trace": [
+              "new MetadataResource (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/metadata-resource.ts:28:35)",
+              "/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:127:9",
+              "visit (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:183:9)",
+              "visit (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:180:9)",
+              "injectMetadataResources (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:116:5)",
+              "Object.synthesize (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/private/synthesis.ts:15:5)",
+              "App.synth (/Users/binary/PersonalWebsite/packages/cdk/node_modules/monocdk/lib/core/lib/stage.ts:160:29)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/bin/cdk.ts:33:5)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Module.m._compile (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:858:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/index.ts:861:12)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:227:14)",
+              "Object.<anonymous> (/Users/binary/PersonalWebsite/packages/cdk/node_modules/ts-node/src/bin.ts:513:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ]
+      },
+      "displayName": "PersonalWebsiteStack"
+    }
+  }
+}

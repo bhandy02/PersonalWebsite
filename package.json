@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "bootstrap": "yarn install && lerna bootstrap",
+    "build": "lerna run prepare && lerna run install && lerna run build",
+    "release": "yarn bootstrap && yarn build"
+  },
+  "dependencies": {
+    "lerna": "^4.0.0"
+  },
+  "name": "PersonalWebsite"
+}

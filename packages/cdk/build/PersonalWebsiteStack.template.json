@@ -1,0 +1,931 @@
+{
+  "Resources": {
+    "StaticWebsiteHostedZoneFF354E29": {
+      "Type": "AWS::Route53::HostedZone",
+      "Properties": {
+        "Name": "brianhandy.io."
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/HostedZone/Resource"
+      }
+    },
+    "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleC558C69B": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/ServiceRole/Resource"
+      }
+    },
+    "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyBBEC5BA3": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "acm:RequestCertificate",
+                "acm:DescribeCertificate",
+                "acm:DeleteCertificate",
+                "acm:AddTagsToCertificate"
+              ],
+              "Effect": "Allow",
+              "Resource": "*"
+            },
+            {
+              "Action": "route53:GetChange",
+              "Effect": "Allow",
+              "Resource": "*"
+            },
+            {
+              "Action": "route53:changeResourceRecordSets",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":route53:::hostedzone/",
+                    {
+                      "Ref": "StaticWebsiteHostedZoneFF354E29"
+                    }
+                  ]
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyBBEC5BA3",
+        "Roles": [
+          {
+            "Ref": "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleC558C69B"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
+    "StaticWebsiteCertificateCertificateRequestorFunction8DAF9CCF": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3Bucket5BEBDCBE"
+          },
+          "S3Key": {
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Fn::Select": [
+                    0,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Fn::Select": [
+                    1,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleC558C69B",
+            "Arn"
+          ]
+        },
+        "Handler": "index.certificateRequestHandler",
+        "Runtime": "nodejs14.x",
+        "Timeout": 900
+      },
+      "DependsOn": [
+        "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyBBEC5BA3",
+        "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleC558C69B"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/Resource",
+        "aws:asset:path": "asset.7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4",
+        "aws:asset:property": "Code"
+      }
+    },
+    "StaticWebsiteCertificateCertificateRequestorResource7C29CEF3": {
+      "Type": "AWS::CloudFormation::CustomResource",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "StaticWebsiteCertificateCertificateRequestorFunction8DAF9CCF",
+            "Arn"
+          ]
+        },
+        "DomainName": "brianhandy.io",
+        "HostedZoneId": {
+          "Ref": "StaticWebsiteHostedZoneFF354E29"
+        }
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorResource/Default"
+      }
+    },
+    "StaticWebsiteWebsiteBucket0FD1C291": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
+              }
+            }
+          ]
+        },
+        "BucketName": "brian-handy-personal-website",
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true
+        },
+        "VersioningConfiguration": {
+          "Status": "Enabled"
+        },
+        "WebsiteConfiguration": {
+          "ErrorDocument": "index.html",
+          "IndexDocument": "index.html"
+        }
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/WebsiteBucket/Resource"
+      }
+    },
+    "StaticWebsiteWebsiteBucketPolicy8C735E20": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Ref": "StaticWebsiteWebsiteBucket0FD1C291"
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetBucket*",
+                "s3:GetObject*",
+                "s3:List*"
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "CanonicalUser": {
+                  "Fn::GetAtt": [
+                    "StaticWebsiteOAI19BF508D",
+                    "S3CanonicalUserId"
+                  ]
+                }
+              },
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "StaticWebsiteWebsiteBucket0FD1C291",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "StaticWebsiteWebsiteBucket0FD1C291",
+                          "Arn"
+                        ]
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Action": "s3:*",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":iam::",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":root"
+                    ]
+                  ]
+                }
+              },
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "StaticWebsiteWebsiteBucket0FD1C291",
+                          "Arn"
+                        ]
+                      },
+                      "/*"
+                    ]
+                  ]
+                },
+                {
+                  "Fn::GetAtt": [
+                    "StaticWebsiteWebsiteBucket0FD1C291",
+                    "Arn"
+                  ]
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/WebsiteBucket/Policy/Resource"
+      }
+    },
+    "StaticWebsiteOAI19BF508D": {
+      "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+      "Properties": {
+        "CloudFrontOriginAccessIdentityConfig": {
+          "Comment": "OAI for accessing static website assets in S3."
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/OAI/Resource"
+      }
+    },
+    "StaticWebsiteDistributionBAD21F75": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "Aliases": [
+            "brianhandy.io"
+          ],
+          "DefaultCacheBehavior": {
+            "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+            "Compress": true,
+            "TargetOriginId": "PersonalWebsiteStackStaticWebsiteDistributionOrigin1F470EDCD",
+            "ViewerProtocolPolicy": "redirect-to-https"
+          },
+          "DefaultRootObject": "index.html",
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "IPV6Enabled": true,
+          "Origins": [
+            {
+              "CustomOriginConfig": {
+                "OriginProtocolPolicy": "http-only",
+                "OriginSSLProtocols": [
+                  "TLSv1.2"
+                ]
+              },
+              "DomainName": {
+                "Fn::Select": [
+                  2,
+                  {
+                    "Fn::Split": [
+                      "/",
+                      {
+                        "Fn::GetAtt": [
+                          "StaticWebsiteWebsiteBucket0FD1C291",
+                          "WebsiteURL"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Id": "PersonalWebsiteStackStaticWebsiteDistributionOrigin1F470EDCD"
+            }
+          ],
+          "ViewerCertificate": {
+            "AcmCertificateArn": {
+              "Fn::GetAtt": [
+                "StaticWebsiteCertificateCertificateRequestorResource7C29CEF3",
+                "Arn"
+              ]
+            },
+            "MinimumProtocolVersion": "TLSv1.2_2019",
+            "SslSupportMethod": "sni-only"
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/Distribution/Resource"
+      }
+    },
+    "StaticWebsiteRecordSet9CD5CEF4": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "Name": "CloudfrontAliasRecord.brianhandy.io.",
+        "Type": "AAAA",
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "StaticWebsiteDistributionBAD21F75",
+              "DomainName"
+            ]
+          },
+          "HostedZoneId": {
+            "Fn::FindInMap": [
+              "AWSCloudFrontPartitionHostedZoneIdMap",
+              {
+                "Ref": "AWS::Partition"
+              },
+              "zoneId"
+            ]
+          }
+        },
+        "HostedZoneId": {
+          "Ref": "StaticWebsiteHostedZoneFF354E29"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/RecordSet/Resource"
+      }
+    },
+    "StaticWebsiteCloudfrontInvalidationFunctionCloudfrontInvalidationCustomResource95B1AF7F": {
+      "Type": "Custom::CloudFrontInvalidationFunction",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "InvalidateArtifactsea8342bb056e431a808da043d7d4a0696A64990F",
+            "Arn"
+          ]
+        },
+        "InvalidationPaths": "/index.html",
+        "DistributionId": {
+          "Ref": "StaticWebsiteDistributionBAD21F75"
+        }
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/CloudfrontInvalidationFunction/CloudfrontInvalidationCustomResource/Default"
+      }
+    },
+    "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambdaServiceRole28AEF620": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/ArtifactCopyLambdaFunction/CopyCustomResourceLambda/ServiceRole/Resource"
+      }
+    },
+    "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambdaServiceRoleDefaultPolicy0D2CBC13": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:Get*",
+                "s3:List*",
+                "s3:Put*",
+                "s3:DeleteObject"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "StaticWebsiteWebsiteBucket0FD1C291",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "StaticWebsiteWebsiteBucket0FD1C291",
+                          "Arn"
+                        ]
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Action": [
+                "s3:Get*",
+                "s3:List*"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":s3:::",
+                      {
+                        "Ref": "CodeBuildBucket"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":s3:::",
+                      {
+                        "Ref": "CodeBuildBucket"
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Action": "kms:*",
+              "Effect": "Allow",
+              "Resource": "*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambdaServiceRoleDefaultPolicy0D2CBC13",
+        "Roles": [
+          {
+            "Ref": "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambdaServiceRole28AEF620"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/ArtifactCopyLambdaFunction/CopyCustomResourceLambda/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
+    "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambda411A6BE1": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "ZipFile": "import logging as l\nimport cfnresponse as cf\nimport boto3,uuid,mimetypes,json,subprocess,zipfile,os,tempfile,sys\nfrom botocore.client import Config\nNN=None\ndef run(cmd):\n    l.info(f'Run:{cmd}')\n    p=subprocess.Popen(cmd)\n    r=p.wait()\n    if r != 0:\n        raise ValueError(\"CmdFail\")\n    return r\n\ndef is_true(k,p):\n    return p.get(k,'').lower() in ['true']\n\nSC='SkipCleanup'\nR='ROOT'\nS='SUBFOLDER'\ndef main(ev, context):\n    rand = str(uuid.uuid4())\n    l.getLogger().setLevel(l.INFO)\n    try:\n        l.info(f'In: {ev}')\n        rp = ev['ResourceProperties']\n        clean = not is_true(SC,rp) if SC in rp else is_true(CD,rp)\n        dst_bucket = rp['DestBucket']\n        source_bkt = rp.get('SourceBucket', rp.get('TestActualBucket'))\n        source_key = rp.get('SourceKey', rp.get('AdditionalArtifactsFolder'))\n        z_sub = rp.get('Subfolder', '')\n\n        actual_source=NN\n        actual_full_dest=NN\n        actual_dest_key = ''\n\n        if ev['RequestType'] == \"Delete\":\n            cf.send(ev,context,cf.SUCCESS,{},rand)\n            return\n        s3 = boto3.resource('s3',config=Config(signature_version='s3v4'))\n        l.info(\"Get\")\n        t = tempfile.TemporaryDirectory()\n        zp = f'{t.name}/a.zip'\n        s3.Bucket(source_bkt).download_file(source_key, zp)\n        l.info(\"DLd\")\n        ext_t = tempfile.TemporaryDirectory()\n        with zipfile.ZipFile(zp, 'r') as a:\n            if (z_sub in ['/', '.', '']):\n                a.extractall(ext_t.name)\n            else:\n                for f in a.namelist():\n                    if f.startswith(z_sub):\n                        a.extract(f, ext_t.name)\n            actual_source = f'{ext_t.name}/{z_sub}'\n\n        actual_full_dest = dst_bucket\n\n        actual_full_dest = f's3://{actual_full_dest}'\n        l.info(f'Copy {actual_source} to {actual_full_dest}')\n        clt = tempfile.TemporaryDirectory()\n        os.environ['HOME'] = clt.name\n        run(['pip3','install','--force-reinstall','--user','-I','awscli'])\n        P=\"PATH\"\n        os.environ[P] = f'{os.environ[P]}:{clt.name}/.local/bin/'\n        os.environ.pop('PYTHONPATH',NN)\n        a = [\"aws\",\"s3\",\"sync\",\"--metadata-directive\",\"REPLACE\",actual_source,actual_full_dest]\n        run(a)\n\n        cf.send(ev,context,cf.SUCCESS,{'DestPath':actual_dest_key,'OriginPath':actual_dest_key},rand)\n    except Exception as e:\n        l.exception(e)\n        cf.send(ev,context,cf.FAILED,{},rand)"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambdaServiceRole28AEF620",
+            "Arn"
+          ]
+        },
+        "Description": "Copies the static resources from one spot to another",
+        "Handler": "index.main",
+        "MemorySize": 3008,
+        "Runtime": "python3.6",
+        "Timeout": 900
+      },
+      "DependsOn": [
+        "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambdaServiceRoleDefaultPolicy0D2CBC13",
+        "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambdaServiceRole28AEF620"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/ArtifactCopyLambdaFunction/CopyCustomResourceLambda/Resource"
+      }
+    },
+    "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResource7FFF908B": {
+      "Type": "Custom::StaticCopy",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "StaticWebsiteArtifactCopyLambdaFunctionCopyCustomResourceLambda411A6BE1",
+            "Arn"
+          ]
+        },
+        "DestBucket": {
+          "Ref": "StaticWebsiteWebsiteBucket0FD1C291"
+        },
+        "SourceBucket": {
+          "Ref": "CodeBuildBucket"
+        },
+        "SourceKey": {
+          "Ref": "CodeBuildKey"
+        },
+        "Subfolder": "personal-website/build/"
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/ArtifactCopyLambdaFunction/CopyCustomResource/Default"
+      }
+    },
+    "InvalidateArtifactsea8342bb056e431a808da043d7d4a069ServiceRoleADCF3905": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/InvalidateArtifactsea8342bb056e431a808da043d7d4a069/ServiceRole/Resource"
+      }
+    },
+    "InvalidateArtifactsea8342bb056e431a808da043d7d4a069ServiceRoleDefaultPolicy53AB78B9": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "cloudfront:CreateInvalidation",
+              "Effect": "Allow",
+              "Resource": "*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "InvalidateArtifactsea8342bb056e431a808da043d7d4a069ServiceRoleDefaultPolicy53AB78B9",
+        "Roles": [
+          {
+            "Ref": "InvalidateArtifactsea8342bb056e431a808da043d7d4a069ServiceRoleADCF3905"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/InvalidateArtifactsea8342bb056e431a808da043d7d4a069/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
+    "InvalidateArtifactsea8342bb056e431a808da043d7d4a0696A64990F": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "ZipFile": "import logging as log\nimport cfnresponse as cf\nimport boto3\nimport uuid\nimport mimetypes\nfrom botocore.client import Config\nimport json\nimport zipfile, os, tempfile, sys, time\nimport subprocess\n\n\ndef main(ev, context):\n    log.getLogger().setLevel(log.INFO)\n    try:\n        log.info(f'Invalidate - input: {ev}')\n\n        logical_id = ev['LogicalResourceId']\n        request_type = ev['RequestType']\n        stack_id = ev['StackId']\n        props = ev['ResourceProperties']\n\n        resp = {}\n        if request_type == \"Delete\":\n            cf.send(ev, context, cf.SUCCESS, resp, str(uuid.uuid4()))\n            return\n\n        client = boto3.client('cloudfront')\n        do_invalidate(props, client)\n        cf.send(ev, context, cf.SUCCESS, resp, str(uuid.uuid4()))\n    except Exception as e:\n        log.exception(e)\n        cf.send(ev, context, cf.FAILED, {}, str(uuid.uuid4()))\n\ndef do_invalidate(props, client):\n    print(\"Invalidating CloudFront cache\")\n\n    distribution_id = props['DistributionId']\n\n    client.create_invalidation(\n        DistributionId=distribution_id,\n        InvalidationBatch={\n            'Paths': {\n                'Quantity': len(invalidation_paths),\n                'Items': invalidation_paths\n            },\n            'CallerReference': str(time.time())\n        }\n    )"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "InvalidateArtifactsea8342bb056e431a808da043d7d4a069ServiceRoleADCF3905",
+            "Arn"
+          ]
+        },
+        "Handler": "index.main",
+        "MemorySize": 256,
+        "Runtime": "python3.6",
+        "Timeout": 900
+      },
+      "DependsOn": [
+        "InvalidateArtifactsea8342bb056e431a808da043d7d4a069ServiceRoleDefaultPolicy53AB78B9",
+        "InvalidateArtifactsea8342bb056e431a808da043d7d4a069ServiceRoleADCF3905"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/InvalidateArtifactsea8342bb056e431a808da043d7d4a069/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAAE21RwU7DMAz9Fu4hbEzjPoomOCCmTuLAZfISr/LWxFPigFDVfydpYd2B03vP9ouenbmez5Z6duPYs7En3W0FzElV7KOEZETBV9x1gZPgcqG7Z46C9oM9qurgr9QKAGo0HGxpjGyL0iuDQehABgQdeGgw6Ccf36Elm0u2mtqqBbe3oLt18kaIfXnpwrfkmxaFL5VeETjd1dwOWQbccEvmu8iR9SoudhAjStSrAlnr7jGZU6Z56peNMJmvdd6g5WQPgb3o7i1QQ35lDMb4YtELyeCoysy6zPw78UT5mrRPf1td675XQ7R8+GxsVI2RUzB5qRSF3STLWSe+gQAOBUMRr3A+F29Jwt7SeB/PFvUx3n3OH/R9/uNjJLoNKUdyqOsRfwDEzQQLAAIAAA=="
+      },
+      "Metadata": {
+        "aws:cdk:path": "PersonalWebsiteStack/CDKMetadata/Default"
+      },
+      "Condition": "CDKMetadataAvailable"
+    }
+  },
+  "Parameters": {
+    "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3Bucket5BEBDCBE": {
+      "Type": "String",
+      "Description": "S3 bucket for asset \"7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4\""
+    },
+    "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC": {
+      "Type": "String",
+      "Description": "S3 key for asset version \"7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4\""
+    },
+    "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4ArtifactHash5E28809B": {
+      "Type": "String",
+      "Description": "Artifact hash for asset \"7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4\""
+    },
+    "CodeBuildBucket": {
+      "Type": "String"
+    },
+    "CodeBuildKey": {
+      "Type": "String"
+    }
+  },
+  "Mappings": {
+    "AWSCloudFrontPartitionHostedZoneIdMap": {
+      "aws": {
+        "zoneId": "Z2FDTNDATAQYW2"
+      },
+      "aws-cn": {
+        "zoneId": "Z3RFFRIM2A3IF5"
+      }
+    }
+  },
+  "Conditions": {
+    "CDKMetadataAvailable": {
+      "Fn::Or": [
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "af-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-northeast-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-northeast-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-southeast-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-southeast-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ca-central-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "cn-north-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "cn-northwest-1"
+              ]
+            }
+          ]
+        },
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-central-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-north-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-3"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "me-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "sa-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-east-2"
+              ]
+            }
+          ]
+        },
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-west-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-west-2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
