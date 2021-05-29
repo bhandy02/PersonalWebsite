@@ -3,7 +3,7 @@ import {Bucket, BucketEncryption, BlockPublicAccess, } from 'monocdk/aws-s3';
 import { PolicyStatement, AccountRootPrincipal } from 'monocdk/aws-iam';
 import {HostedZone, AaaaRecord, RecordTarget} from 'monocdk/aws-route53';
 import {CloudFrontTarget} from 'monocdk/aws-route53-targets';
-import { DnsValidatedCertificate, CertificateValidation } from 'monocdk/aws-certificatemanager';
+import { DnsValidatedCertificate, CertificateValidation, Certificate } from 'monocdk/aws-certificatemanager';
 import {CodebuildWebsiteArtifactConfiguration, ArtifactCopyConfiguration} from './website-artifact-location-configuration';
 import {ArtifactCopyLambdaFunction} from './artifact-copy-lambda-function';
 import {
@@ -23,31 +23,18 @@ import {CloudfrontInvalidationFunction} from './cloudfront-invalidation-function
 import {S3Origin} from 'monocdk/aws-cloudfront-origins';
 
 export interface StaticWebsiteProps {
-    websiteDomainName: string;
     websiteArtifactCopyConfiguration: CodebuildWebsiteArtifactConfiguration;
 }
 
 export class StaticWebsite extends Construct {
     readonly bucket: Bucket;
     readonly distribution: Distribution;
-    readonly websiteDomainName: string;
     constructor(parent: Construct, name: string, props: StaticWebsiteProps) {
         super(parent, name);
 
-        this.websiteDomainName = props.websiteDomainName
-
-        const hostedZone = new HostedZone(this, 'HostedZone', {
-            zoneName: this.websiteDomainName
-        });
-
-        const certificate = new DnsValidatedCertificate(this, 'Certificate', {
-            domainName: this.websiteDomainName,
-            hostedZone: hostedZone,
-            validation: CertificateValidation.fromDns(hostedZone)
-        });
 
         this.bucket = new Bucket(this, 'WebsiteBucket', {
-            bucketName: 'brian-handy-personal-website',
+            bucketName: 'static-website',
             encryption: BucketEncryption.S3_MANAGED,
             blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
             versioned: true,
@@ -74,17 +61,22 @@ export class StaticWebsite extends Construct {
 
             }),
         );
+        const websiteDomainName:string = Fn.importValue('WebsiteDomainName');
+        const hostedZone = HostedZone.fromHostedZoneAttributes(this, 'HostedZone', {hostedZoneId: Fn.importValue('HostedZoneId'), zoneName: websiteDomainName});
+        const certificate = Certificate.fromCertificateArn(this, 'Certificate', Fn.importValue('CertificateArn'));
+
 
         const distribution = new Distribution(this, 'Distribution', {
             defaultRootObject: 'index.html',
             certificate: certificate,
-            domainNames: [this.websiteDomainName],
+            domainNames: [websiteDomainName],
             enabled: true,
             httpVersion: HttpVersion.HTTP2,
             enableLogging: false,
             enableIpv6: true,
             defaultBehavior: {origin: new S3Origin(this.bucket), viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS}
         });
+
 
         const recordSet = new AaaaRecord(this, 'RecordSet', {
             zone: hostedZone,

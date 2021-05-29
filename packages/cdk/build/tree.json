@@ -16,6 +16,315 @@
         "id": "BuildStack",
         "path": "BuildStack",
         "children": {
+          "HostedZone": {
+            "id": "HostedZone",
+            "path": "BuildStack/HostedZone",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "BuildStack/HostedZone/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Route53::HostedZone",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "brianhandy.io."
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "monocdk.aws_route53.CfnHostedZone",
+                  "version": "1.105.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "monocdk.aws_route53.HostedZone",
+              "version": "1.105.0"
+            }
+          },
+          "Certificate": {
+            "id": "Certificate",
+            "path": "BuildStack/Certificate",
+            "children": {
+              "CertificateRequestorFunction": {
+                "id": "CertificateRequestorFunction",
+                "path": "BuildStack/Certificate/CertificateRequestorFunction",
+                "children": {
+                  "ServiceRole": {
+                    "id": "ServiceRole",
+                    "path": "BuildStack/Certificate/CertificateRequestorFunction/ServiceRole",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "BuildStack/Certificate/CertificateRequestorFunction/ServiceRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "lambda.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                                  ]
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "monocdk.aws_iam.CfnRole",
+                          "version": "1.105.0"
+                        }
+                      },
+                      "DefaultPolicy": {
+                        "id": "DefaultPolicy",
+                        "path": "BuildStack/Certificate/CertificateRequestorFunction/ServiceRole/DefaultPolicy",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "BuildStack/Certificate/CertificateRequestorFunction/ServiceRole/DefaultPolicy/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                              "aws:cdk:cloudformation:props": {
+                                "policyDocument": {
+                                  "Statement": [
+                                    {
+                                      "Action": [
+                                        "acm:RequestCertificate",
+                                        "acm:DescribeCertificate",
+                                        "acm:DeleteCertificate",
+                                        "acm:AddTagsToCertificate"
+                                      ],
+                                      "Effect": "Allow",
+                                      "Resource": "*"
+                                    },
+                                    {
+                                      "Action": "route53:GetChange",
+                                      "Effect": "Allow",
+                                      "Resource": "*"
+                                    },
+                                    {
+                                      "Action": "route53:changeResourceRecordSets",
+                                      "Effect": "Allow",
+                                      "Resource": {
+                                        "Fn::Join": [
+                                          "",
+                                          [
+                                            "arn:",
+                                            {
+                                              "Ref": "AWS::Partition"
+                                            },
+                                            ":route53:::hostedzone/",
+                                            {
+                                              "Ref": "HostedZoneDB99F866"
+                                            }
+                                          ]
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "Version": "2012-10-17"
+                                },
+                                "policyName": "CertificateCertificateRequestorFunctionServiceRoleDefaultPolicy3C8845BC",
+                                "roles": [
+                                  {
+                                    "Ref": "CertificateCertificateRequestorFunctionServiceRoleC04C13DA"
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "monocdk.aws_iam.CfnPolicy",
+                              "version": "1.105.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "monocdk.aws_iam.Policy",
+                          "version": "1.105.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "monocdk.aws_iam.Role",
+                      "version": "1.105.0"
+                    }
+                  },
+                  "Code": {
+                    "id": "Code",
+                    "path": "BuildStack/Certificate/CertificateRequestorFunction/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "BuildStack/Certificate/CertificateRequestorFunction/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "monocdk.AssetStaging",
+                          "version": "1.105.0"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "BuildStack/Certificate/CertificateRequestorFunction/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "monocdk.Resource",
+                          "version": "1.105.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "monocdk.aws_s3_assets.Asset",
+                      "version": "1.105.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "BuildStack/Certificate/CertificateRequestorFunction/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                      "aws:cdk:cloudformation:props": {
+                        "code": {
+                          "s3Bucket": {
+                            "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3Bucket5BEBDCBE"
+                          },
+                          "s3Key": {
+                            "Fn::Join": [
+                              "",
+                              [
+                                {
+                                  "Fn::Select": [
+                                    0,
+                                    {
+                                      "Fn::Split": [
+                                        "||",
+                                        {
+                                          "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Fn::Select": [
+                                    1,
+                                    {
+                                      "Fn::Split": [
+                                        "||",
+                                        {
+                                          "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            ]
+                          }
+                        },
+                        "role": {
+                          "Fn::GetAtt": [
+                            "CertificateCertificateRequestorFunctionServiceRoleC04C13DA",
+                            "Arn"
+                          ]
+                        },
+                        "handler": "index.certificateRequestHandler",
+                        "runtime": "nodejs14.x",
+                        "timeout": 900
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "monocdk.aws_lambda.CfnFunction",
+                      "version": "1.105.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "monocdk.aws_lambda.Function",
+                  "version": "1.105.0"
+                }
+              },
+              "CertificateRequestorResource": {
+                "id": "CertificateRequestorResource",
+                "path": "BuildStack/Certificate/CertificateRequestorResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "BuildStack/Certificate/CertificateRequestorResource/Default",
+                    "constructInfo": {
+                      "fqn": "monocdk.CfnResource",
+                      "version": "1.105.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "monocdk.CustomResource",
+                  "version": "1.105.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "monocdk.aws_certificatemanager.DnsValidatedCertificate",
+              "version": "1.105.0"
+            }
+          },
+          "AssetParameters": {
+            "id": "AssetParameters",
+            "path": "BuildStack/AssetParameters",
+            "children": {
+              "7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4": {
+                "id": "7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4",
+                "path": "BuildStack/AssetParameters/7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4",
+                "children": {
+                  "S3Bucket": {
+                    "id": "S3Bucket",
+                    "path": "BuildStack/AssetParameters/7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4/S3Bucket",
+                    "constructInfo": {
+                      "fqn": "monocdk.CfnParameter",
+                      "version": "1.105.0"
+                    }
+                  },
+                  "S3VersionKey": {
+                    "id": "S3VersionKey",
+                    "path": "BuildStack/AssetParameters/7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4/S3VersionKey",
+                    "constructInfo": {
+                      "fqn": "monocdk.CfnParameter",
+                      "version": "1.105.0"
+                    }
+                  },
+                  "ArtifactHash": {
+                    "id": "ArtifactHash",
+                    "path": "BuildStack/AssetParameters/7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4/ArtifactHash",
+                    "constructInfo": {
+                      "fqn": "monocdk.CfnParameter",
+                      "version": "1.105.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "monocdk.Construct",
+                  "version": "1.105.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "monocdk.Construct",
+              "version": "1.105.0"
+            }
+          },
           "Pipeline": {
             "id": "Pipeline",
             "path": "BuildStack/Pipeline",
@@ -622,10 +931,10 @@
                                 ]
                               },
                               "ParameterOverrides": "{\"Stage\":\"production\"}",
-                              "TemplateConfiguration": "BuildOutput::cdk/build/templateConfig.json",
+                              "TemplateConfiguration": "BuildOutput::packages/cdk/build/templateConfig.json",
                               "ActionMode": "CHANGE_SET_REPLACE",
                               "ChangeSetName": "ChangeSetUpdate-production-us-east-1",
-                              "TemplatePath": "BuildOutput::cdk/build/PersonalWebsiteStack.template.json"
+                              "TemplatePath": "BuildOutput::packages/cdk/build/PersonalWebsiteStack.template.json"
                             },
                             "runOrder": 1,
                             "roleArn": {
@@ -1532,6 +1841,30 @@
               "version": "1.105.0"
             }
           },
+          "WebsiteDomainName": {
+            "id": "WebsiteDomainName",
+            "path": "BuildStack/WebsiteDomainName",
+            "constructInfo": {
+              "fqn": "monocdk.CfnOutput",
+              "version": "1.105.0"
+            }
+          },
+          "HostedZoneId": {
+            "id": "HostedZoneId",
+            "path": "BuildStack/HostedZoneId",
+            "constructInfo": {
+              "fqn": "monocdk.CfnOutput",
+              "version": "1.105.0"
+            }
+          },
+          "CertificateArn": {
+            "id": "CertificateArn",
+            "path": "BuildStack/CertificateArn",
+            "constructInfo": {
+              "fqn": "monocdk.CfnOutput",
+              "version": "1.105.0"
+            }
+          },
           "CDKMetadata": {
             "id": "CDKMetadata",
             "path": "BuildStack/CDKMetadata",
@@ -1564,271 +1897,6 @@
             "id": "StaticWebsite",
             "path": "PersonalWebsiteStack/StaticWebsite",
             "children": {
-              "HostedZone": {
-                "id": "HostedZone",
-                "path": "PersonalWebsiteStack/StaticWebsite/HostedZone",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "PersonalWebsiteStack/StaticWebsite/HostedZone/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::Route53::HostedZone",
-                      "aws:cdk:cloudformation:props": {
-                        "name": "brianhandy.io."
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "monocdk.aws_route53.CfnHostedZone",
-                      "version": "1.105.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "monocdk.aws_route53.HostedZone",
-                  "version": "1.105.0"
-                }
-              },
-              "Certificate": {
-                "id": "Certificate",
-                "path": "PersonalWebsiteStack/StaticWebsite/Certificate",
-                "children": {
-                  "CertificateRequestorFunction": {
-                    "id": "CertificateRequestorFunction",
-                    "path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction",
-                    "children": {
-                      "ServiceRole": {
-                        "id": "ServiceRole",
-                        "path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/ServiceRole",
-                        "children": {
-                          "Resource": {
-                            "id": "Resource",
-                            "path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/ServiceRole/Resource",
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::IAM::Role",
-                              "aws:cdk:cloudformation:props": {
-                                "assumeRolePolicyDocument": {
-                                  "Statement": [
-                                    {
-                                      "Action": "sts:AssumeRole",
-                                      "Effect": "Allow",
-                                      "Principal": {
-                                        "Service": "lambda.amazonaws.com"
-                                      }
-                                    }
-                                  ],
-                                  "Version": "2012-10-17"
-                                },
-                                "managedPolicyArns": [
-                                  {
-                                    "Fn::Join": [
-                                      "",
-                                      [
-                                        "arn:",
-                                        {
-                                          "Ref": "AWS::Partition"
-                                        },
-                                        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-                                      ]
-                                    ]
-                                  }
-                                ]
-                              }
-                            },
-                            "constructInfo": {
-                              "fqn": "monocdk.aws_iam.CfnRole",
-                              "version": "1.105.0"
-                            }
-                          },
-                          "DefaultPolicy": {
-                            "id": "DefaultPolicy",
-                            "path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/ServiceRole/DefaultPolicy",
-                            "children": {
-                              "Resource": {
-                                "id": "Resource",
-                                "path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/ServiceRole/DefaultPolicy/Resource",
-                                "attributes": {
-                                  "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
-                                  "aws:cdk:cloudformation:props": {
-                                    "policyDocument": {
-                                      "Statement": [
-                                        {
-                                          "Action": [
-                                            "acm:RequestCertificate",
-                                            "acm:DescribeCertificate",
-                                            "acm:DeleteCertificate",
-                                            "acm:AddTagsToCertificate"
-                                          ],
-                                          "Effect": "Allow",
-                                          "Resource": "*"
-                                        },
-                                        {
-                                          "Action": "route53:GetChange",
-                                          "Effect": "Allow",
-                                          "Resource": "*"
-                                        },
-                                        {
-                                          "Action": "route53:changeResourceRecordSets",
-                                          "Effect": "Allow",
-                                          "Resource": {
-                                            "Fn::Join": [
-                                              "",
-                                              [
-                                                "arn:",
-                                                {
-                                                  "Ref": "AWS::Partition"
-                                                },
-                                                ":route53:::hostedzone/",
-                                                {
-                                                  "Ref": "StaticWebsiteHostedZoneFF354E29"
-                                                }
-                                              ]
-                                            ]
-                                          }
-                                        }
-                                      ],
-                                      "Version": "2012-10-17"
-                                    },
-                                    "policyName": "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyBBEC5BA3",
-                                    "roles": [
-                                      {
-                                        "Ref": "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleC558C69B"
-                                      }
-                                    ]
-                                  }
-                                },
-                                "constructInfo": {
-                                  "fqn": "monocdk.aws_iam.CfnPolicy",
-                                  "version": "1.105.0"
-                                }
-                              }
-                            },
-                            "constructInfo": {
-                              "fqn": "monocdk.aws_iam.Policy",
-                              "version": "1.105.0"
-                            }
-                          }
-                        },
-                        "constructInfo": {
-                          "fqn": "monocdk.aws_iam.Role",
-                          "version": "1.105.0"
-                        }
-                      },
-                      "Code": {
-                        "id": "Code",
-                        "path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/Code",
-                        "children": {
-                          "Stage": {
-                            "id": "Stage",
-                            "path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/Code/Stage",
-                            "constructInfo": {
-                              "fqn": "monocdk.AssetStaging",
-                              "version": "1.105.0"
-                            }
-                          },
-                          "AssetBucket": {
-                            "id": "AssetBucket",
-                            "path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/Code/AssetBucket",
-                            "constructInfo": {
-                              "fqn": "monocdk.Resource",
-                              "version": "1.105.0"
-                            }
-                          }
-                        },
-                        "constructInfo": {
-                          "fqn": "monocdk.aws_s3_assets.Asset",
-                          "version": "1.105.0"
-                        }
-                      },
-                      "Resource": {
-                        "id": "Resource",
-                        "path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/Resource",
-                        "attributes": {
-                          "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
-                          "aws:cdk:cloudformation:props": {
-                            "code": {
-                              "s3Bucket": {
-                                "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3Bucket5BEBDCBE"
-                              },
-                              "s3Key": {
-                                "Fn::Join": [
-                                  "",
-                                  [
-                                    {
-                                      "Fn::Select": [
-                                        0,
-                                        {
-                                          "Fn::Split": [
-                                            "||",
-                                            {
-                                              "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC"
-                                            }
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "Fn::Select": [
-                                        1,
-                                        {
-                                          "Fn::Split": [
-                                            "||",
-                                            {
-                                              "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC"
-                                            }
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                ]
-                              }
-                            },
-                            "role": {
-                              "Fn::GetAtt": [
-                                "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleC558C69B",
-                                "Arn"
-                              ]
-                            },
-                            "handler": "index.certificateRequestHandler",
-                            "runtime": "nodejs14.x",
-                            "timeout": 900
-                          }
-                        },
-                        "constructInfo": {
-                          "fqn": "monocdk.aws_lambda.CfnFunction",
-                          "version": "1.105.0"
-                        }
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "monocdk.aws_lambda.Function",
-                      "version": "1.105.0"
-                    }
-                  },
-                  "CertificateRequestorResource": {
-                    "id": "CertificateRequestorResource",
-                    "path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorResource",
-                    "children": {
-                      "Default": {
-                        "id": "Default",
-                        "path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorResource/Default",
-                        "constructInfo": {
-                          "fqn": "monocdk.CfnResource",
-                          "version": "1.105.0"
-                        }
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "monocdk.CustomResource",
-                      "version": "1.105.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "monocdk.aws_certificatemanager.DnsValidatedCertificate",
-                  "version": "1.105.0"
-                }
-              },
               "WebsiteBucket": {
                 "id": "WebsiteBucket",
                 "path": "PersonalWebsiteStack/StaticWebsite/WebsiteBucket",
@@ -1848,7 +1916,7 @@
                             }
                           ]
                         },
-                        "bucketName": "brian-handy-personal-website",
+                        "bucketName": "static-website",
                         "publicAccessBlockConfiguration": {
                           "blockPublicAcls": true,
                           "blockPublicPolicy": true,
@@ -2022,6 +2090,22 @@
                   "version": "1.105.0"
                 }
               },
+              "HostedZone": {
+                "id": "HostedZone",
+                "path": "PersonalWebsiteStack/StaticWebsite/HostedZone",
+                "constructInfo": {
+                  "fqn": "monocdk.Resource",
+                  "version": "1.105.0"
+                }
+              },
+              "Certificate": {
+                "id": "Certificate",
+                "path": "PersonalWebsiteStack/StaticWebsite/Certificate",
+                "constructInfo": {
+                  "fqn": "monocdk.Resource",
+                  "version": "1.105.0"
+                }
+              },
               "Distribution": {
                 "id": "Distribution",
                 "path": "PersonalWebsiteStack/StaticWebsite/Distribution",
@@ -2077,17 +2161,16 @@
                             "viewerProtocolPolicy": "redirect-to-https"
                           },
                           "aliases": [
-                            "brianhandy.io"
+                            {
+                              "Fn::ImportValue": "WebsiteDomainName"
+                            }
                           ],
                           "defaultRootObject": "index.html",
                           "httpVersion": "http2",
                           "ipv6Enabled": true,
                           "viewerCertificate": {
                             "acmCertificateArn": {
-                              "Fn::GetAtt": [
-                                "StaticWebsiteCertificateCertificateRequestorResource7C29CEF3",
-                                "Arn"
-                              ]
+                              "Fn::ImportValue": "CertificateArn"
                             },
                             "sslSupportMethod": "sni-only",
                             "minimumProtocolVersion": "TLSv1.2_2019"
@@ -2116,7 +2199,18 @@
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::Route53::RecordSet",
                       "aws:cdk:cloudformation:props": {
-                        "name": "CloudfrontAliasRecord.brianhandy.io.",
+                        "name": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "CloudfrontAliasRecord.",
+                              {
+                                "Fn::ImportValue": "WebsiteDomainName"
+                              },
+                              "."
+                            ]
+                          ]
+                        },
                         "type": "AAAA",
                         "aliasTarget": {
                           "hostedZoneId": {
@@ -2136,7 +2230,7 @@
                           }
                         },
                         "hostedZoneId": {
-                          "Ref": "StaticWebsiteHostedZoneFF354E29"
+                          "Fn::ImportValue": "HostedZoneId"
                         }
                       }
                     },
@@ -2402,50 +2496,6 @@
                     },
                     "constructInfo": {
                       "fqn": "monocdk.CustomResource",
-                      "version": "1.105.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "monocdk.Construct",
-                  "version": "1.105.0"
-                }
-              }
-            },
-            "constructInfo": {
-              "fqn": "monocdk.Construct",
-              "version": "1.105.0"
-            }
-          },
-          "AssetParameters": {
-            "id": "AssetParameters",
-            "path": "PersonalWebsiteStack/AssetParameters",
-            "children": {
-              "7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4": {
-                "id": "7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4",
-                "path": "PersonalWebsiteStack/AssetParameters/7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4",
-                "children": {
-                  "S3Bucket": {
-                    "id": "S3Bucket",
-                    "path": "PersonalWebsiteStack/AssetParameters/7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4/S3Bucket",
-                    "constructInfo": {
-                      "fqn": "monocdk.CfnParameter",
-                      "version": "1.105.0"
-                    }
-                  },
-                  "S3VersionKey": {
-                    "id": "S3VersionKey",
-                    "path": "PersonalWebsiteStack/AssetParameters/7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4/S3VersionKey",
-                    "constructInfo": {
-                      "fqn": "monocdk.CfnParameter",
-                      "version": "1.105.0"
-                    }
-                  },
-                  "ArtifactHash": {
-                    "id": "ArtifactHash",
-                    "path": "PersonalWebsiteStack/AssetParameters/7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4/ArtifactHash",
-                    "constructInfo": {
-                      "fqn": "monocdk.CfnParameter",
                       "version": "1.105.0"
                     }
                   }

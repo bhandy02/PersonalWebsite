@@ -1,182 +1,5 @@
 {
   "Resources": {
-    "StaticWebsiteHostedZoneFF354E29": {
-      "Type": "AWS::Route53::HostedZone",
-      "Properties": {
-        "Name": "brianhandy.io."
-      },
-      "Metadata": {
-        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/HostedZone/Resource"
-      }
-    },
-    "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleC558C69B": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com"
-              }
-            }
-          ],
-          "Version": "2012-10-17"
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition"
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-              ]
-            ]
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/ServiceRole/Resource"
-      }
-    },
-    "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyBBEC5BA3": {
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": [
-                "acm:RequestCertificate",
-                "acm:DescribeCertificate",
-                "acm:DeleteCertificate",
-                "acm:AddTagsToCertificate"
-              ],
-              "Effect": "Allow",
-              "Resource": "*"
-            },
-            {
-              "Action": "route53:GetChange",
-              "Effect": "Allow",
-              "Resource": "*"
-            },
-            {
-              "Action": "route53:changeResourceRecordSets",
-              "Effect": "Allow",
-              "Resource": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":route53:::hostedzone/",
-                    {
-                      "Ref": "StaticWebsiteHostedZoneFF354E29"
-                    }
-                  ]
-                ]
-              }
-            }
-          ],
-          "Version": "2012-10-17"
-        },
-        "PolicyName": "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyBBEC5BA3",
-        "Roles": [
-          {
-            "Ref": "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleC558C69B"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/ServiceRole/DefaultPolicy/Resource"
-      }
-    },
-    "StaticWebsiteCertificateCertificateRequestorFunction8DAF9CCF": {
-      "Type": "AWS::Lambda::Function",
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3Bucket5BEBDCBE"
-          },
-          "S3Key": {
-            "Fn::Join": [
-              "",
-              [
-                {
-                  "Fn::Select": [
-                    0,
-                    {
-                      "Fn::Split": [
-                        "||",
-                        {
-                          "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "Fn::Select": [
-                    1,
-                    {
-                      "Fn::Split": [
-                        "||",
-                        {
-                          "Ref": "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            ]
-          }
-        },
-        "Role": {
-          "Fn::GetAtt": [
-            "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleC558C69B",
-            "Arn"
-          ]
-        },
-        "Handler": "index.certificateRequestHandler",
-        "Runtime": "nodejs14.x",
-        "Timeout": 900
-      },
-      "DependsOn": [
-        "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleDefaultPolicyBBEC5BA3",
-        "StaticWebsiteCertificateCertificateRequestorFunctionServiceRoleC558C69B"
-      ],
-      "Metadata": {
-        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorFunction/Resource",
-        "aws:asset:path": "asset.7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4",
-        "aws:asset:property": "Code"
-      }
-    },
-    "StaticWebsiteCertificateCertificateRequestorResource7C29CEF3": {
-      "Type": "AWS::CloudFormation::CustomResource",
-      "Properties": {
-        "ServiceToken": {
-          "Fn::GetAtt": [
-            "StaticWebsiteCertificateCertificateRequestorFunction8DAF9CCF",
-            "Arn"
-          ]
-        },
-        "DomainName": "brianhandy.io",
-        "HostedZoneId": {
-          "Ref": "StaticWebsiteHostedZoneFF354E29"
-        }
-      },
-      "UpdateReplacePolicy": "Delete",
-      "DeletionPolicy": "Delete",
-      "Metadata": {
-        "aws:cdk:path": "PersonalWebsiteStack/StaticWebsite/Certificate/CertificateRequestorResource/Default"
-      }
-    },
     "StaticWebsiteWebsiteBucket0FD1C291": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
@@ -189,7 +12,7 @@
             }
           ]
         },
-        "BucketName": "brian-handy-personal-website",
+        "BucketName": "static-website",
         "PublicAccessBlockConfiguration": {
           "BlockPublicAcls": true,
           "BlockPublicPolicy": true,
@@ -324,7 +147,9 @@
       "Properties": {
         "DistributionConfig": {
           "Aliases": [
-            "brianhandy.io"
+            {
+              "Fn::ImportValue": "WebsiteDomainName"
+            }
           ],
           "DefaultCacheBehavior": {
             "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
@@ -365,10 +190,7 @@
           ],
           "ViewerCertificate": {
             "AcmCertificateArn": {
-              "Fn::GetAtt": [
-                "StaticWebsiteCertificateCertificateRequestorResource7C29CEF3",
-                "Arn"
-              ]
+              "Fn::ImportValue": "CertificateArn"
             },
             "MinimumProtocolVersion": "TLSv1.2_2019",
             "SslSupportMethod": "sni-only"
@@ -382,7 +204,18 @@
     "StaticWebsiteRecordSet9CD5CEF4": {
       "Type": "AWS::Route53::RecordSet",
       "Properties": {
-        "Name": "CloudfrontAliasRecord.brianhandy.io.",
+        "Name": {
+          "Fn::Join": [
+            "",
+            [
+              "CloudfrontAliasRecord.",
+              {
+                "Fn::ImportValue": "WebsiteDomainName"
+              },
+              "."
+            ]
+          ]
+        },
         "Type": "AAAA",
         "AliasTarget": {
           "DNSName": {
@@ -402,7 +235,7 @@
           }
         },
         "HostedZoneId": {
-          "Ref": "StaticWebsiteHostedZoneFF354E29"
+          "Fn::ImportValue": "HostedZoneId"
         }
       },
       "Metadata": {
@@ -696,32 +529,12 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAAE21RwU7DMAz9Fu4hbEzjPoomOCCmTuLAZfISr/LWxFPigFDVfydpYd2B03vP9ouenbmez5Z6duPYs7En3W0FzElV7KOEZETBV9x1gZPgcqG7Z46C9oM9qurgr9QKAGo0HGxpjGyL0iuDQehABgQdeGgw6Ccf36Elm0u2mtqqBbe3oLt18kaIfXnpwrfkmxaFL5VeETjd1dwOWQbccEvmu8iR9SoudhAjStSrAlnr7jGZU6Z56peNMJmvdd6g5WQPgb3o7i1QQ35lDMb4YtELyeCoysy6zPw78UT5mrRPf1td675XQ7R8+GxsVI2RUzB5qRSF3STLWSe+gQAOBUMRr3A+F29Jwt7SeB/PFvUx3n3OH/R9/uNjJLoNKUdyqOsRfwDEzQQLAAIAAA=="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAAE21RQU7DMBB8C3djGlC5l6BKPSBQ+gDk2ttqG3u3stcgFOXv2EkhHDjNrDWzsyM3ulmt9eomMLF1vR72YmyvWqYkMVtR5jO9D+lBD0/Z9iCqPdKVzfDGHu3X8jzPo7KesztGJtHDa8QT0sZaSGnngARlcrRVs62afxXPWG7AQxZkqvK/86giZ4F1OWxjjOnAcnRVNLM9yKi8CQdnSiWkkwdh2may07JfUgw/fFRogh469jDtqbiUu9YaVQeJc7RFk5NwWMYavfAXc7mU2MlqogkgEKfKTA7nOGIH+pzuPppHfV++4JwQb2Mu3QPobsZvTp6NlJ8BAAA="
       },
       "Metadata": {
         "aws:cdk:path": "PersonalWebsiteStack/CDKMetadata/Default"
       },
       "Condition": "CDKMetadataAvailable"
-    }
-  },
-  "Parameters": {
-    "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3Bucket5BEBDCBE": {
-      "Type": "String",
-      "Description": "S3 bucket for asset \"7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4\""
-    },
-    "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4S3VersionKey326451BC": {
-      "Type": "String",
-      "Description": "S3 key for asset version \"7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4\""
-    },
-    "AssetParameters7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4ArtifactHash5E28809B": {
-      "Type": "String",
-      "Description": "Artifact hash for asset \"7af6295e521fd55af94332393ceffb3e866aac4dc4956321f7918f21e72199e4\""
-    },
-    "CodeBuildBucket": {
-      "Type": "String"
-    },
-    "CodeBuildKey": {
-      "Type": "String"
     }
   },
   "Mappings": {
@@ -732,6 +545,14 @@
       "aws-cn": {
         "zoneId": "Z3RFFRIM2A3IF5"
       }
+    }
+  },
+  "Parameters": {
+    "CodeBuildBucket": {
+      "Type": "String"
+    },
+    "CodeBuildKey": {
+      "Type": "String"
     }
   },
   "Conditions": {

@@ -1,4 +1,5 @@
 import { App, Aws, Stack, StackProps, CfnOutput } from 'monocdk';
+import { CertificateValidation, DnsValidatedCertificate } from 'monocdk/aws-certificatemanager';
 import { LinuxBuildImage, PipelineProject } from 'monocdk/aws-codebuild';
 import { Repository } from 'monocdk/aws-codecommit';
 import { Artifact, Pipeline } from 'monocdk/aws-codepipeline';
@@ -13,6 +14,7 @@ import {
 } from 'monocdk/aws-codepipeline-actions';
 import { AccountPrincipal, PolicyStatement } from 'monocdk/aws-iam';
 import { IKey } from 'monocdk/aws-kms';
+import { HostedZone } from 'monocdk/aws-route53';
 
 export interface CodeCommitProps {
     readonly codeCommitSourceActionProps: CodeCommitSourceActionProps;
@@ -25,6 +27,7 @@ export interface BuildStackProps extends StackProps {
     readonly stageRegionMap: {[key: string]: string[]};
     readonly githubProps?: GitHubSourceActionProps;
     readonly codeCommitProps?: CodeCommitProps;
+    readonly websiteDomainName: string;
 }
 
 export class BuildStack extends Stack {
@@ -32,12 +35,24 @@ export class BuildStack extends Stack {
     public readonly artifactBucketEncryptionKey? : IKey
     readonly githubSourceActionProps?: GitHubSourceActionProps;
     readonly codeCommitProps?: CodeCommitProps;
+    readonly websiteDomainName: string;
 
     constructor(parent: App, name: string, props: BuildStackProps) {
         super(parent, name, props);
         this.githubSourceActionProps = props.githubProps;
         this.codeCommitProps = props.codeCommitProps;
+        this.websiteDomainName = props.websiteDomainName;
+        
+        const hostedZone = new HostedZone(this, 'HostedZone', {
+            zoneName: this.websiteDomainName
+        });
 
+        const certificate = new DnsValidatedCertificate(this, 'Certificate', {
+            domainName: this.websiteDomainName,
+            hostedZone: hostedZone,
+            validation: CertificateValidation.fromDns(hostedZone),
+            region: 'us-east-1'
+        });
 
         const pipeline = new Pipeline(this, 'Pipeline', {
         });
@@ -111,8 +126,8 @@ export class BuildStack extends Stack {
                     changeSetName,
                     adminPermissions: true,
                     runOrder: 1,
-                    templatePath: buildOutput.atPath('cdk/build/PersonalWebsiteStack.template.json'),
-                    templateConfiguration: buildOutput.atPath('cdk/build/templateConfig.json'),
+                    templatePath: buildOutput.atPath('packages/cdk/build/PersonalWebsiteStack.template.json'),
+                    templateConfiguration: buildOutput.atPath('packages/cdk/build/templateConfig.json'),
                     parameterOverrides: {
                         "Stage": stage
                     }
@@ -126,5 +141,9 @@ export class BuildStack extends Stack {
                 }));
             });
         });
+
+        new CfnOutput(this, 'WebsiteDomainName', {value: this.websiteDomainName, exportName: 'WebsiteDomainName'})
+        new CfnOutput(this, 'HostedZoneId', { value: hostedZone.hostedZoneId, exportName: 'HostedZoneId'})
+        new CfnOutput(this, 'CertificateArn', {value: certificate.certificateArn, exportName: 'CertificateArn'})
     }
 }

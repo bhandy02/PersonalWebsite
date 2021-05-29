@@ -26,7 +26,8 @@ const githubProps: GitHubSourceActionProps = {
 new BuildStack(app, 'BuildStack', {
     env,
     githubProps,
-    stageRegionMap
+    stageRegionMap,
+    websiteDomainName: 'brianhandy.io'
 });
 new PersonalWebsiteStack(app, 'PersonalWebsiteStack');
 
