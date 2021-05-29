@@ -126,8 +126,8 @@ export class BuildStack extends Stack {
                     changeSetName,
                     adminPermissions: true,
                     runOrder: 1,
-                    templatePath: buildOutput.atPath('packages/cdk/build/PersonalWebsiteStack.template.json'),
-                    templateConfiguration: buildOutput.atPath('packages/cdk/build/templateConfig.json'),
+                    templatePath: buildOutput.atPath('cdk/build/PersonalWebsiteStack.template.json'),
+                    templateConfiguration: buildOutput.atPath('cdk/build/templateConfig.json'),
                     parameterOverrides: {
                         "Stage": stage
                     }

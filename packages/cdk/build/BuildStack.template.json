@@ -678,10 +678,10 @@
                     ]
                   },
                   "ParameterOverrides": "{\"Stage\":\"production\"}",
-                  "TemplateConfiguration": "BuildOutput::packages/cdk/build/templateConfig.json",
+                  "TemplateConfiguration": "BuildOutput::cdk/build/templateConfig.json",
                   "ActionMode": "CHANGE_SET_REPLACE",
                   "ChangeSetName": "ChangeSetUpdate-production-us-east-1",
-                  "TemplatePath": "BuildOutput::packages/cdk/build/PersonalWebsiteStack.template.json"
+                  "TemplatePath": "BuildOutput::cdk/build/PersonalWebsiteStack.template.json"
                 },
                 "InputArtifacts": [
                   {
