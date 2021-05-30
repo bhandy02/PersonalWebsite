@@ -23,6 +23,7 @@ import {S3Origin} from 'monocdk/aws-cloudfront-origins';
 
 export interface StaticWebsiteProps {
     websiteArtifactCopyConfiguration: CodebuildWebsiteArtifactConfiguration;
+    s3BucketSuffix: string;
 }
 
 export class StaticWebsite extends Construct {
@@ -32,7 +33,7 @@ export class StaticWebsite extends Construct {
         super(parent, name);
 
         this.bucket = new Bucket(this, 'WebsiteBucket', {
-            bucketName: `static-website-${randomId()}`, // Add a random string at the end of the bucketName, since S3 buckets must be globally unique
+            bucketName: `static-website${props.s3BucketSuffix}`,
             encryption: BucketEncryption.S3_MANAGED,
             blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
             versioned: true,
@@ -41,7 +42,7 @@ export class StaticWebsite extends Construct {
             removalPolicy: RemovalPolicy.RETAIN,
         });
 
-        new ArtifactCopyLambdaFunction(this, 'ArtifactCopyLambdaFunction', {
+        const copyFunction = new ArtifactCopyLambdaFunction(this, 'ArtifactCopyLambdaFunction', {
             destBucket: this.bucket,
             sourceBucket: props.websiteArtifactCopyConfiguration.websiteCopyConfiguration().sourceBucket,
             sourceKey: props.websiteArtifactCopyConfiguration.websiteCopyConfiguration().sourceKey,
@@ -80,7 +81,7 @@ export class StaticWebsite extends Construct {
             httpVersion: HttpVersion.HTTP2,
             enableLogging: false,
             enableIpv6: true,
-            defaultBehavior: {origin: new S3Origin(this.bucket, {originAccessIdentity}), viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS}
+            defaultBehavior: {origin: new S3Origin(this.bucket, {originAccessIdentity, originPath: copyFunction.destPath}), viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS}
         });
 
 
@@ -99,15 +100,3 @@ export class StaticWebsite extends Construct {
     }
 
 }
-
-function randomId(length = 16) {
-    var result           = [];
-    const characters       = 'abcdefghijklmnopqrstuvwxyz';
-    const charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result.push(characters.charAt(Math.floor(Math.random() * 
- charactersLength)));
-   }
-   return result.join('');
-}
-
