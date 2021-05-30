@@ -677,7 +677,6 @@
                       "Arn"
                     ]
                   },
-                  "ParameterOverrides": "{\"Stage\":\"production\"}",
                   "TemplateConfiguration": "BuildOutput::cdk/build/templateConfig.json",
                   "ActionMode": "CHANGE_SET_REPLACE",
                   "ChangeSetName": "ChangeSetUpdate-production-us-east-1",
