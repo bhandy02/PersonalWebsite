@@ -127,10 +127,7 @@ export class BuildStack extends Stack {
                     adminPermissions: true,
                     runOrder: 1,
                     templatePath: buildOutput.atPath('cdk/build/PersonalWebsiteStack.template.json'),
-                    templateConfiguration: buildOutput.atPath('cdk/build/templateConfig.json'),
-                    parameterOverrides: {
-                        "Stage": stage
-                    }
+                    templateConfiguration: buildOutput.atPath('cdk/build/templateConfig.json')
                 }));
                 stageSpecificStage.addAction(new CloudFormationExecuteChangeSetAction({
                     actionName: `ExecuteChangeSet-${stage}-${region}`,
