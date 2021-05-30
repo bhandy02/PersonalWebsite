@@ -64,7 +64,6 @@ export class ArtifactCopyLambdaFunction extends Construct {
                 def is_true(k,p):
                     return p.get(k,'').lower() in ['true']
 
-                SC='SkipCleanup'
                 R='ROOT'
                 S='SUBFOLDER'
                 def main(ev, context):
@@ -73,7 +72,6 @@ export class ArtifactCopyLambdaFunction extends Construct {
                     try:
                         l.info(f'In: {ev}')
                         rp = ev['ResourceProperties']
-                        clean = not is_true(SC,rp) if SC in rp else is_true(CD,rp)
                         dst_bucket = rp['DestBucket']
                         source_bkt = rp.get('SourceBucket', rp.get('TestActualBucket'))
                         source_key = rp.get('SourceKey', rp.get('AdditionalArtifactsFolder'))
