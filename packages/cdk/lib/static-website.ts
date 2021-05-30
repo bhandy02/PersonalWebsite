@@ -32,7 +32,7 @@ export class StaticWebsite extends Construct {
         super(parent, name);
 
         this.bucket = new Bucket(this, 'WebsiteBucket', {
-            bucketName: `static-website-${Fn.importValue('ProjectName')}-${uuid()}`, // Add a UUID at the end of the bucketName, since S3 buckets must be globally unique
+            bucketName: `static-website-${Fn.importValue('ProjectName')}-${uuid()}`.toLowerCase(), // Add a UUID at the end of the bucketName, since S3 buckets must be globally unique
             encryption: BucketEncryption.S3_MANAGED,
             blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
             versioned: true,
