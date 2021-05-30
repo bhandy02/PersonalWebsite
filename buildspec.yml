@@ -16,7 +16,6 @@ phases:
       - cd packages/cdk
       - yarn install && yarn build
 artifacts:
-  base-directory: packages
   files:
-    - "cdk/build/**/*"
-    - "personal-website/build/**/*"
+    - "packages/cdk/build/**/*"
+    - "packages/personal-website/build/**/*"
