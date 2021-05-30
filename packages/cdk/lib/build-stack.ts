@@ -142,7 +142,6 @@ export class BuildStack extends Stack {
             });
         });
         
-        new CfnOutput(this, 'ProjectName', {value: props.projectName, exportName: 'ProjectName'})
         new CfnOutput(this, 'WebsiteDomainName', {value: this.websiteDomainName, exportName: 'WebsiteDomainName'})
         new CfnOutput(this, 'HostedZoneId', { value: hostedZone.hostedZoneId, exportName: 'HostedZoneId'})
         new CfnOutput(this, 'CertificateArn', {value: certificate.certificateArn, exportName: 'CertificateArn'})

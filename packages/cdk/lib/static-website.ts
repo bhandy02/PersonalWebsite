@@ -32,7 +32,7 @@ export class StaticWebsite extends Construct {
         super(parent, name);
 
         this.bucket = new Bucket(this, 'WebsiteBucket', {
-            bucketName: `static-website-${Fn.importValue('ProjectName')}-${uuid()}`.toLowerCase(), // Add a UUID at the end of the bucketName, since S3 buckets must be globally unique
+            bucketName: `static-website-${randomId()}`, // Add a random string at the end of the bucketName, since S3 buckets must be globally unique
             encryption: BucketEncryption.S3_MANAGED,
             blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
             versioned: true,
@@ -100,12 +100,14 @@ export class StaticWebsite extends Construct {
 
 }
 
-function uuid() {  
-    var uuidValue = "", k, randomValue;  
-    for (k = 0; k < 8;k++) {  
-      randomValue = Math.random() * 16 | 0;     
-      uuidValue += (k == 12 ? 4 : (k == 16 ? (randomValue & 3 | 8) : randomValue)).toString(16);  
-    }  
-    return uuidValue;  
-  } 
+function randomId(length = 16) {
+    var result           = [];
+    const characters       = 'abcdefghijklmnopqrstuvwxyz';
+    const charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result.push(characters.charAt(Math.floor(Math.random() * 
+ charactersLength)));
+   }
+   return result.join('');
+}
 
