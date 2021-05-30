@@ -47,7 +47,8 @@ export class CloudfrontInvalidationFunction extends Construct {
                 
                 def do_invalidate(props, client):
                     print("Invalidating CloudFront cache")
-                
+
+                    invalidation_paths = props.get('InvalidationPaths', props.get('ObjectPath', '/*')).split(',')
                     distribution_id = props['DistributionId']
                 
                     client.create_invalidation(
