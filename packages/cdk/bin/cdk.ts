@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
-import {App, SecretValue, CfnParameter} from 'monocdk';
+import {App, SecretValue} from 'monocdk';
 import { PersonalWebsiteStack } from '../lib/personal-website-stack';
 import {BuildStack} from '../lib/build-stack';
 import { Artifact } from 'monocdk/aws-codepipeline';
