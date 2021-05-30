@@ -16,7 +16,8 @@ import {
     SourceConfiguration,
     ViewerProtocolPolicy,
     SecurityPolicyProtocol,
-    ViewerCertificate
+    ViewerCertificate,
+    CloudFrontWebDistribution
 } from 'monocdk/aws-cloudfront';
 import {CloudfrontInvalidationFunction} from './cloudfront-invalidation-function'
 import {S3Origin} from 'monocdk/aws-cloudfront-origins';
@@ -70,18 +71,28 @@ export class StaticWebsite extends Construct {
         const websiteDomainName:string = Fn.importValue('WebsiteDomainName');
         const hostedZone = HostedZone.fromHostedZoneAttributes(this, 'HostedZone', {hostedZoneId: Fn.importValue('HostedZoneId'), zoneName: websiteDomainName});
         const certificate = Certificate.fromCertificateArn(this, 'Certificate', Fn.importValue('CertificateArn'));
+        
+        const sourceConfigs: SourceConfiguration[] =
+            [
+                {
+                    s3OriginSource: {
+                        originAccessIdentity,
+                        s3BucketSource: this.bucket
+                    },
+                    behaviors: [{isDefaultBehavior: true}],
+                    originPath: copyFunction.destPath
+                }];
 
-
-        const distribution = new Distribution(this, 'Distribution', {
-            
+        const distribution = new CloudFrontWebDistribution(this, 'Distribution', {  
             defaultRootObject: 'index.html',
-            certificate: certificate,
-            domainNames: [websiteDomainName],
-            enabled: true,
-            httpVersion: HttpVersion.HTTP2,
-            enableLogging: false,
-            enableIpv6: true,
-            defaultBehavior: {origin: new S3Origin(this.bucket, {originAccessIdentity, originPath: copyFunction.destPath}), viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS}
+                enableIpV6: true,
+                httpVersion: HttpVersion.HTTP2,
+                viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+                originConfigs: sourceConfigs,
+                aliasConfiguration: {
+                    acmCertRef: certificate.certificateArn,
+                    names: [websiteDomainName]
+                },
         });
 
 
