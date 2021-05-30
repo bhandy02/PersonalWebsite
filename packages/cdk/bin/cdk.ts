@@ -27,7 +27,8 @@ new BuildStack(app, 'BuildStack', {
     env,
     githubProps,
     stageRegionMap,
-    websiteDomainName: 'brianhandy.io'
+    websiteDomainName: 'brianhandy.io',
+    projectName: 'PersonalWebsite'
 });
 new PersonalWebsiteStack(app, 'PersonalWebsiteStack');
 

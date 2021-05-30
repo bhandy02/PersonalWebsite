@@ -1,6 +1,6 @@
 import { App, Aws, Stack, StackProps, CfnOutput } from 'monocdk';
 import { CertificateValidation, DnsValidatedCertificate } from 'monocdk/aws-certificatemanager';
-import { LinuxBuildImage, PipelineProject } from 'monocdk/aws-codebuild';
+import { ComputeType, LinuxBuildImage, PipelineProject } from 'monocdk/aws-codebuild';
 import { Repository } from 'monocdk/aws-codecommit';
 import { Artifact, Pipeline } from 'monocdk/aws-codepipeline';
 import {
@@ -28,6 +28,7 @@ export interface BuildStackProps extends StackProps {
     readonly githubProps?: GitHubSourceActionProps;
     readonly codeCommitProps?: CodeCommitProps;
     readonly websiteDomainName: string;
+    readonly projectName: string;
 }
 
 export class BuildStack extends Stack {
@@ -55,6 +56,7 @@ export class BuildStack extends Stack {
         });
 
         const pipeline = new Pipeline(this, 'Pipeline', {
+            pipelineName: props.projectName
         });
 
         pipeline.artifactBucket.addToResourcePolicy( new PolicyStatement({
@@ -100,7 +102,8 @@ export class BuildStack extends Stack {
         const buildStage = pipeline.addStage({ stageName: 'build' });
         const project = new PipelineProject(this, 'CodeBuildProject', {
             environment: {
-                buildImage: LinuxBuildImage.STANDARD_3_0
+                buildImage: LinuxBuildImage.STANDARD_3_0,
+                computeType: ComputeType.SMALL
             }
         });
 
@@ -113,7 +116,7 @@ export class BuildStack extends Stack {
             outputs: [buildOutput]
         }));
 
-        const stackNameBase = 'PersonalWebsite';
+        const stackNameBase = props.projectName;
 
         Object.keys(props.stageRegionMap).forEach(stage => {
             const stageSpecificStage = pipeline.addStage({ stageName: `Update-${stage}` });
@@ -128,9 +131,6 @@ export class BuildStack extends Stack {
                     runOrder: 1,
                     templatePath: buildOutput.atPath('cdk/build/PersonalWebsiteStack.template.json'),
                     templateConfiguration: buildOutput.atPath('cdk/build/templateConfig.json'),
-                    parameterOverrides: {
-                        "Stage": stage
-                    }
                 }));
                 stageSpecificStage.addAction(new CloudFormationExecuteChangeSetAction({
                     actionName: `ExecuteChangeSet-${stage}-${region}`,
@@ -141,7 +141,8 @@ export class BuildStack extends Stack {
                 }));
             });
         });
-
+        
+        new CfnOutput(this, 'ProjectName', {value: props.projectName, exportName: 'ProjectName'})
         new CfnOutput(this, 'WebsiteDomainName', {value: this.websiteDomainName, exportName: 'WebsiteDomainName'})
         new CfnOutput(this, 'HostedZoneId', { value: hostedZone.hostedZoneId, exportName: 'HostedZoneId'})
         new CfnOutput(this, 'CertificateArn', {value: certificate.certificateArn, exportName: 'CertificateArn'})

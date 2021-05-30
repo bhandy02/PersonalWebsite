@@ -19,7 +19,6 @@ import {
     ViewerCertificate
 } from 'monocdk/aws-cloudfront';
 import {CloudfrontInvalidationFunction} from './cloudfront-invalidation-function'
-
 import {S3Origin} from 'monocdk/aws-cloudfront-origins';
 
 export interface StaticWebsiteProps {
@@ -32,9 +31,8 @@ export class StaticWebsite extends Construct {
     constructor(parent: Construct, name: string, props: StaticWebsiteProps) {
         super(parent, name);
 
-
         this.bucket = new Bucket(this, 'WebsiteBucket', {
-            bucketName: 'static-website',
+            bucketName: `static-website-${Fn.importValue('ProjectName')}-${uuid()}`, // Add a UUID at the end of the bucketName, since S3 buckets must be globally unique
             encryption: BucketEncryption.S3_MANAGED,
             blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
             versioned: true,
@@ -67,6 +65,7 @@ export class StaticWebsite extends Construct {
 
 
         const distribution = new Distribution(this, 'Distribution', {
+            
             defaultRootObject: 'index.html',
             certificate: certificate,
             domainNames: [websiteDomainName],
@@ -100,4 +99,17 @@ export class StaticWebsite extends Construct {
     }
 
 }
+
+function uuid() {  
+    var uuidValue = "", k, randomValue;  
+    for (k = 0; k < 32;k++) {  
+      randomValue = Math.random() * 16 | 0;  
+    
+      if (k == 8 || k == 12 || k == 16 || k == 20) {  
+        uuidValue += "-"  
+      }  
+      uuidValue += (k == 12 ? 4 : (k == 16 ? (randomValue & 3 | 8) : randomValue)).toString(16);  
+    }  
+    return uuidValue;  
+  } 
 
