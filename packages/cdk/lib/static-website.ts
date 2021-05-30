@@ -41,6 +41,13 @@ export class StaticWebsite extends Construct {
             removalPolicy: RemovalPolicy.RETAIN,
         });
 
+        new ArtifactCopyLambdaFunction(this, 'ArtifactCopyLambdaFunction', {
+            destBucket: this.bucket,
+            sourceBucket: props.websiteArtifactCopyConfiguration.websiteCopyConfiguration().sourceBucket,
+            sourceKey: props.websiteArtifactCopyConfiguration.websiteCopyConfiguration().sourceKey,
+            zipSubFolder: props.websiteArtifactCopyConfiguration.websiteCopyConfiguration().zipSubFolder
+        })
+
         const originAccessIdentity = new OriginAccessIdentity(this, 'OAI', {
             comment: 'OAI for accessing static website assets in S3.'
         });
@@ -73,7 +80,7 @@ export class StaticWebsite extends Construct {
             httpVersion: HttpVersion.HTTP2,
             enableLogging: false,
             enableIpv6: true,
-            defaultBehavior: {origin: new S3Origin(this.bucket), viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS}
+            defaultBehavior: {origin: new S3Origin(this.bucket, {originAccessIdentity}), viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS}
         });
 
 
@@ -89,13 +96,6 @@ export class StaticWebsite extends Construct {
             distributionId: distribution.distributionId
         })
 
-
-        new ArtifactCopyLambdaFunction(this, 'ArtifactCopyLambdaFunction', {
-            destBucket: this.bucket,
-            sourceBucket: props.websiteArtifactCopyConfiguration.websiteCopyConfiguration().sourceBucket,
-            sourceKey: props.websiteArtifactCopyConfiguration.websiteCopyConfiguration().sourceKey,
-            zipSubFolder: props.websiteArtifactCopyConfiguration.websiteCopyConfiguration().zipSubFolder
-        })
     }
 
 }
