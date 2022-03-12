@@ -95,14 +95,15 @@ export class StaticWebsite extends Construct {
                 },
         });
 
-        new ARecord(this, 'RecordSet', {
+        // Need two record sets, as the CF distribution has IPv6 enabled.
+        new ARecord(this, 'ARecordSet', {
             zone: hostedZone,
             target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
             recordName: 'CloudfrontAliasRecord'
         });
 
 
-        new AaaaRecord(this, 'RecordSet', {
+        new AaaaRecord(this, 'AaaaRecordSet', {
             zone: hostedZone,
             target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
             recordName: 'CloudfrontAliasRecord'
