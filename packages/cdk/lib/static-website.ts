@@ -76,7 +76,7 @@ export class StaticWebsite extends Construct {
             enableAcceptEncodingGzip: true,
             enableAcceptEncodingBrotli: true,
         });
-        const distribution = new Distribution(this, 'Distribution', {
+        const distribution = new Distribution(this, 'PersonalWebsiteDistribution', {
             defaultRootObject: 'index.html',
             httpVersion: HttpVersion.HTTP2,
             defaultBehavior: {
