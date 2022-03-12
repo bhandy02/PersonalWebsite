@@ -99,14 +99,12 @@ export class StaticWebsite extends Construct {
         new ARecord(this, 'ARecordSet', {
             zone: hostedZone,
             target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
-            recordName: 'CloudfrontAliasRecord'
         });
 
 
         new AaaaRecord(this, 'AaaaRecordSet', {
             zone: hostedZone,
             target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
-            recordName: 'CloudfrontAliasRecord'
         });
         
         
