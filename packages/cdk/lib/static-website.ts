@@ -1,26 +1,22 @@
-import {Aws, CfnParameter, Construct, Fn, RemovalPolicy, Stack, Token, StackProps} from 'monocdk';
-import {Bucket, BucketEncryption, BlockPublicAccess, } from 'monocdk/aws-s3';
-import { PolicyStatement, AccountRootPrincipal } from 'monocdk/aws-iam';
-import {HostedZone, AaaaRecord, RecordTarget, ARecord} from 'monocdk/aws-route53';
+import {Construct, Fn, RemovalPolicy} from 'monocdk';
+import {BlockPublicAccess, Bucket, BucketEncryption,} from 'monocdk/aws-s3';
+import {AccountRootPrincipal, PolicyStatement} from 'monocdk/aws-iam';
+import {AaaaRecord, ARecord, HostedZone, RecordTarget} from 'monocdk/aws-route53';
 import {CloudFrontTarget} from 'monocdk/aws-route53-targets';
-import { DnsValidatedCertificate, CertificateValidation, Certificate } from 'monocdk/aws-certificatemanager';
-import {CodebuildWebsiteArtifactConfiguration, ArtifactCopyConfiguration} from './website-artifact-location-configuration';
+import {Certificate} from 'monocdk/aws-certificatemanager';
+import {CodebuildWebsiteArtifactConfiguration} from './website-artifact-location-configuration';
 import {ArtifactCopyLambdaFunction} from './artifact-copy-lambda-function';
 import {
-    BehaviorOptions, CachePolicy,
-    CloudFrontAllowedMethods,
+    AllowedMethods, CacheCookieBehavior, CachedMethods, CacheHeaderBehavior, CachePolicy, CacheQueryStringBehavior,
     Distribution,
-    DistributionProps,
-    HttpVersion, IOrigin,
+    HttpVersion,
     OriginAccessIdentity,
+    PriceClass, SecurityPolicyProtocol,
     SourceConfiguration,
-    ViewerProtocolPolicy,
-    SecurityPolicyProtocol,
-    ViewerCertificate,
-    CloudFrontWebDistribution
+    ViewerProtocolPolicy
 } from 'monocdk/aws-cloudfront';
 import {CloudfrontInvalidationFunction} from './cloudfront-invalidation-function'
-import {S3Origin} from 'monocdk/aws-cloudfront-origins';
+import {S3Origin} from "monocdk/aws-cloudfront-origins";
 
 export interface StaticWebsiteProps {
     websiteArtifactCopyConfiguration: CodebuildWebsiteArtifactConfiguration;
@@ -71,28 +67,34 @@ export class StaticWebsite extends Construct {
         const websiteDomainName:string = Fn.importValue('WebsiteDomainName');
         const hostedZone = HostedZone.fromHostedZoneAttributes(this, 'HostedZone', {hostedZoneId: Fn.importValue('HostedZoneId'), zoneName: websiteDomainName});
         const certificate = Certificate.fromCertificateArn(this, 'Certificate', Fn.importValue('CertificateArn'));
-        
-        const sourceConfigs: SourceConfiguration[] =
-            [
-                {
-                    s3OriginSource: {
-                        originAccessIdentity,
-                        s3BucketSource: this.bucket
-                    },
-                    behaviors: [{isDefaultBehavior: true}],
-                    originPath: copyFunction.destPath
-                }];
 
-        const distribution = new CloudFrontWebDistribution(this, 'Distribution', {  
+        const distributionCachePolicy = new CachePolicy(this, 'CloudfrontCachePolicy', {
+            cachePolicyName: 'PreserveQueryStringsAndHeadersCachePolicy',
+            queryStringBehavior: CacheQueryStringBehavior.all(),
+            cookieBehavior: CacheCookieBehavior.all(),
+            headerBehavior: CacheHeaderBehavior.allowList('Authorization', 'Access-Control-Request-Headers', 'Access-Control-Request-Method', 'Origin'),
+            enableAcceptEncodingGzip: true,
+            enableAcceptEncodingBrotli: true,
+        });
+        const distribution = new Distribution(this, 'Distribution', {
             defaultRootObject: 'index.html',
-                enableIpV6: true,
-                httpVersion: HttpVersion.HTTP2,
+            httpVersion: HttpVersion.HTTP2,
+            defaultBehavior: {
+                origin: new S3Origin(this.bucket,
+                    {originPath: copyFunction.destPath, originAccessIdentity: originAccessIdentity}),
+                allowedMethods: AllowedMethods.ALLOW_GET_HEAD,
                 viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-                originConfigs: sourceConfigs,
-                aliasConfiguration: {
-                    acmCertRef: certificate.certificateArn,
-                    names: [websiteDomainName]
-                },
+                cachedMethods: CachedMethods.CACHE_GET_HEAD_OPTIONS,
+                compress: true,
+                cachePolicy: distributionCachePolicy
+            },
+            enableIpv6: true,
+            enableLogging: false,
+            enabled: true,
+            priceClass: PriceClass.PRICE_CLASS_100,
+            domainNames: [websiteDomainName],
+            certificate: certificate,
+            minimumProtocolVersion: SecurityPolicyProtocol.TLS_V1_2_2018
         });
 
         // Need two record sets, as the CF distribution has IPv6 enabled.
@@ -106,9 +108,7 @@ export class StaticWebsite extends Construct {
             zone: hostedZone,
             target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
         });
-        
-        
-        
+
         new CloudfrontInvalidationFunction(this, 'CloudfrontInvalidationFunction', {
             distributionId: distribution.distributionId
         })
