@@ -1,7 +1,7 @@
 import {Aws, CfnParameter, Construct, Fn, RemovalPolicy, Stack, Token, StackProps} from 'monocdk';
 import {Bucket, BucketEncryption, BlockPublicAccess, } from 'monocdk/aws-s3';
 import { PolicyStatement, AccountRootPrincipal } from 'monocdk/aws-iam';
-import {HostedZone, AaaaRecord, RecordTarget} from 'monocdk/aws-route53';
+import {HostedZone, AaaaRecord, RecordTarget, ARecord} from 'monocdk/aws-route53';
 import {CloudFrontTarget} from 'monocdk/aws-route53-targets';
 import { DnsValidatedCertificate, CertificateValidation, Certificate } from 'monocdk/aws-certificatemanager';
 import {CodebuildWebsiteArtifactConfiguration, ArtifactCopyConfiguration} from './website-artifact-location-configuration';
@@ -95,12 +95,18 @@ export class StaticWebsite extends Construct {
                 },
         });
 
-
-        const recordSet = new AaaaRecord(this, 'RecordSet', {
+        new ARecord(this, 'RecordSet', {
             zone: hostedZone,
             target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
             recordName: 'CloudfrontAliasRecord'
-        })
+        });
+
+
+        new AaaaRecord(this, 'RecordSet', {
+            zone: hostedZone,
+            target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
+            recordName: 'CloudfrontAliasRecord'
+        });
         
         
         
