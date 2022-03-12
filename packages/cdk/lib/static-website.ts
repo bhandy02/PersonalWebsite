@@ -82,7 +82,7 @@ export class StaticWebsite extends Construct {
             defaultBehavior: {
                 origin: new S3Origin(this.bucket,
                     {originPath: copyFunction.destPath, originAccessIdentity: originAccessIdentity}),
-                allowedMethods: AllowedMethods.ALLOW_GET_HEAD,
+                allowedMethods: AllowedMethods.ALLOW_GET_HEAD_OPTIONS,
                 viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
                 cachedMethods: CachedMethods.CACHE_GET_HEAD_OPTIONS,
                 compress: true,
