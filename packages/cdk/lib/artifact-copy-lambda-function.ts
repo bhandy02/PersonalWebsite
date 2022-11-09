@@ -1,5 +1,5 @@
 import { IBucket } from 'aws-cdk-lib/aws-s3';
-import { PolicyStatement, IRole } from 'aws-cdk-lib/aws-iam';
+import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Duration, CustomResource } from 'aws-cdk-lib';
 import {Construct} from 'constructs';
 import { Function, Code, Runtime } from 'aws-cdk-lib/aws-lambda';
@@ -122,7 +122,7 @@ export class ArtifactCopyLambdaFunction extends Construct {
             handler: 'index.main',
             timeout: Duration.seconds(900),
             memorySize: 3008,
-            runtime: Runtime.PYTHON_3_6,
+            runtime: Runtime.PYTHON_3_9,
             description: 'Copies the static resources from one spot to another',
         });
         copyLambda.addToRolePolicy(new PolicyStatement({

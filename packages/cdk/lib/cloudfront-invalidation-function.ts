@@ -66,7 +66,7 @@ export class CloudfrontInvalidationFunction extends Construct {
             handler: 'index.main',
             timeout: Duration.seconds(900),
             memorySize: 256,
-            runtime: Runtime.PYTHON_3_6,
+            runtime: Runtime.PYTHON_3_9,
             initialPolicy: [
                 new PolicyStatement({
                     actions: ['cloudfront:CreateInvalidation'],
