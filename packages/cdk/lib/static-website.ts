@@ -1,9 +1,10 @@
-import {Construct, Fn, RemovalPolicy} from 'monocdk';
-import {BlockPublicAccess, Bucket, BucketEncryption,} from 'monocdk/aws-s3';
-import {AccountRootPrincipal, PolicyStatement} from 'monocdk/aws-iam';
-import {AaaaRecord, ARecord, HostedZone, RecordTarget} from 'monocdk/aws-route53';
-import {CloudFrontTarget} from 'monocdk/aws-route53-targets';
-import {Certificate} from 'monocdk/aws-certificatemanager';
+import {Fn, RemovalPolicy} from 'aws-cdk-lib';
+import {Construct} from 'constructs';
+import {BlockPublicAccess, Bucket, BucketEncryption,} from 'aws-cdk-lib/aws-s3';
+import {AccountRootPrincipal, PolicyStatement} from 'aws-cdk-lib/aws-iam';
+import {AaaaRecord, ARecord, HostedZone, RecordTarget} from 'aws-cdk-lib/aws-route53';
+import {CloudFrontTarget} from 'aws-cdk-lib/aws-route53-targets';
+import {Certificate} from 'aws-cdk-lib/aws-certificatemanager';
 import {CodebuildWebsiteArtifactConfiguration} from './website-artifact-location-configuration';
 import {ArtifactCopyLambdaFunction} from './artifact-copy-lambda-function';
 import {
@@ -14,9 +15,9 @@ import {
     PriceClass, SecurityPolicyProtocol,
     SourceConfiguration,
     ViewerProtocolPolicy
-} from 'monocdk/aws-cloudfront';
+} from 'aws-cdk-lib/aws-cloudfront';
 import {CloudfrontInvalidationFunction} from './cloudfront-invalidation-function'
-import {S3Origin} from "monocdk/aws-cloudfront-origins";
+import {S3Origin} from "aws-cdk-lib/aws-cloudfront-origins";
 
 export interface StaticWebsiteProps {
     websiteArtifactCopyConfiguration: CodebuildWebsiteArtifactConfiguration;

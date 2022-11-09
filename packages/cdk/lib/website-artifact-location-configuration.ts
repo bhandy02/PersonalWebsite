@@ -1,7 +1,8 @@
-import {Bucket, IBucket} from 'monocdk/aws-s3';
-import {CfnFunction, Code, S3Code} from 'monocdk/aws-lambda';
-import {CfnFunction as SamCfnFunction} from 'monocdk/aws-sam';
-import {CfnParameter, Construct, Stack} from 'monocdk';
+import {Bucket, IBucket} from 'aws-cdk-lib/aws-s3';
+import {CfnFunction, Code, S3Code} from 'aws-cdk-lib/aws-lambda';
+import {CfnFunction as SamCfnFunction} from 'aws-cdk-lib/aws-sam';
+import {CfnParameter, Stack} from 'aws-cdk-lib';
+import {Construct} from 'constructs';
 
 
 export class CodeBuildConstants {

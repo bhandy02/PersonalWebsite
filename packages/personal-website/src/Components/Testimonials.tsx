@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
-class Testimonials extends Component {
+interface TestimonialProps {
+    data: any
+}
+
+class Testimonials extends Component<TestimonialProps, {}> {
   render() {
 
     if(this.props.data){
-      var testimonials = this.props.data.testimonials.map(function(testimonials){
+      var testimonials = this.props.data.testimonials.map(function(testimonials: any){
         return  <li key={testimonials.user}>
             <blockquote>
                <p>{testimonials.text}</p>

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
-import {App, SecretValue} from 'monocdk';
+import {App, SecretValue} from 'aws-cdk-lib';
 import { PersonalWebsiteStack } from '../lib/personal-website-stack';
 import {BuildStack} from '../lib/build-stack';
-import { Artifact } from 'monocdk/aws-codepipeline';
+import { Artifact } from 'aws-cdk-lib/aws-codepipeline';
 
 import {
     GitHubSourceActionProps
-} from 'monocdk/aws-codepipeline-actions';
+} from 'aws-cdk-lib/aws-codepipeline-actions';
 const env = {region: 'us-east-1', account: '552063170091' }
 const app = new App();
 

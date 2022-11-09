@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 
-class Portfolio extends Component {
+
+interface PortfolioProps {
+    data: any
+}
+
+class Portfolio extends Component<PortfolioProps, {}> {
   render() {
 
     if(this.props.data){
-      var projects = this.props.data.projects.map(function(projects){
+      var projects = this.props.data.projects.map(function(projects: any){
         var projectImage = 'images/portfolio/'+projects.image;
         return <div key={projects.title} className="columns portfolio-item">
            <div className="item-wrap">

@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 
-class Contact extends Component {
+interface ContactProps {
+    data: any
+}
+
+class Contact extends Component<ContactProps, {}> {
+    constructor(props: ContactProps) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+  handleChange() {
+
+  }
   render() {
 
-    if(this.props.data){
-      var name = this.props.data.name;
-      var phone= this.props.data.phone;
-      var message = this.props.data.contactmessage;
-    }
+  const name = this.props.data.name;
+  const phone= this.props.data.phone;
+  const message = this.props.data.contactmessage;
+
 
     return (
       <section id="contact">
@@ -36,22 +47,22 @@ class Contact extends Component {
 
                   <div>
 						   <label htmlFor="contactName">Name <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactName" name="contactName" onChange={this.handleChange}/>
+						   <input type="text" defaultValue="" id="contactName" name="contactName" onChange={this.handleChange}/>
                   </div>
 
                   <div>
 						   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={this.handleChange}/>
+						   <input type="text" defaultValue="" id="contactEmail" name="contactEmail" onChange={this.handleChange}/>
                   </div>
 
                   <div>
 						   <label htmlFor="contactSubject">Subject</label>
-						   <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={this.handleChange}/>
+						   <input type="text" defaultValue="" id="contactSubject" name="contactSubject" onChange={this.handleChange}/>
                   </div>
 
                   <div>
                      <label htmlFor="contactMessage">Message <span className="required">*</span></label>
-                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                     <textarea id="contactMessage" name="contactMessage"></textarea>
                   </div>
 
                   <div>

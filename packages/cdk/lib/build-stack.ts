@@ -1,8 +1,8 @@
-import { App, Aws, Stack, StackProps, CfnOutput } from 'monocdk';
-import { CertificateValidation, DnsValidatedCertificate } from 'monocdk/aws-certificatemanager';
-import { ComputeType, LinuxBuildImage, PipelineProject } from 'monocdk/aws-codebuild';
-import { Repository } from 'monocdk/aws-codecommit';
-import { Artifact, Pipeline } from 'monocdk/aws-codepipeline';
+import { App, Aws, Stack, StackProps, CfnOutput } from 'aws-cdk-lib';
+import { CertificateValidation, DnsValidatedCertificate } from 'aws-cdk-lib/aws-certificatemanager';
+import { ComputeType, LinuxBuildImage, PipelineProject } from 'aws-cdk-lib/aws-codebuild';
+import { Repository } from 'aws-cdk-lib/aws-codecommit';
+import { Artifact, Pipeline } from 'aws-cdk-lib/aws-codepipeline';
 import {
     CodeBuildAction,
     CodeCommitSourceAction,
@@ -11,10 +11,10 @@ import {
     GitHubSourceActionProps,
     CodeCommitSourceActionProps,
     GitHubSourceAction,
-} from 'monocdk/aws-codepipeline-actions';
-import { AccountPrincipal, PolicyStatement } from 'monocdk/aws-iam';
-import { IKey } from 'monocdk/aws-kms';
-import { HostedZone } from 'monocdk/aws-route53';
+} from 'aws-cdk-lib/aws-codepipeline-actions';
+import { AccountPrincipal, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { IKey } from 'aws-cdk-lib/aws-kms';
+import { HostedZone } from 'aws-cdk-lib/aws-route53';
 
 export interface CodeCommitProps {
     readonly codeCommitSourceActionProps: CodeCommitSourceActionProps;

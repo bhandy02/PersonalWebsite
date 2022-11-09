@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 
-class About extends Component {
+interface AboutProps {
+    data: any
+}
+
+class About extends Component<AboutProps, {}> {
   render() {
 
-    if(this.props.data){
-      var profilepic= "images/"+this.props.data.image;
-      var bio = this.props.data.bio;
-      var phone= this.props.data.phone;
-      var email = this.props.data.email;
-      var resumeDownload = this.props.data.resumedownload;
-    }
+  const profilePicture = "images/"+this.props.data.image;
+  const bio = this.props.data.bio;
+  const phone= this.props.data.phone;
+  const email = this.props.data.email;
+  const resumeDownload = this.props.data.resumedownload;
 
     return (
       <section id="about">
       <div className="row">
          <div className="three columns">
-            <img className="profile-pic"  src={profilepic} alt="Brian Handy Profile Pic" />
+            <img className="profile-pic"  src={profilePicture} alt="Brian Handy Profile Pic" />
          </div>
          <div className="nine columns main-col">
             <h2>About Me</h2>

@@ -1,7 +1,8 @@
-import { IBucket } from 'monocdk/aws-s3';
-import { PolicyStatement, IRole } from 'monocdk/aws-iam';
-import { Construct, Duration, CustomResource } from 'monocdk';
-import { Function, Code, Runtime } from 'monocdk/aws-lambda';
+import { IBucket } from 'aws-cdk-lib/aws-s3';
+import { PolicyStatement, IRole } from 'aws-cdk-lib/aws-iam';
+import { Duration, CustomResource } from 'aws-cdk-lib';
+import {Construct} from 'constructs';
+import { Function, Code, Runtime } from 'aws-cdk-lib/aws-lambda';
 import dedent from "ts-dedent";
 
 export interface IArtifactCopyLambdaFunctionProps {

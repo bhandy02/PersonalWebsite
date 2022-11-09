@@ -1,14 +1,49 @@
 import React, { Component } from 'react';
+//import {AppConfigRetriever} from "../services/appconfig";
 
-class Header extends Component {
-  render() {
+
+interface HeaderProps {
+    data: any
+}
+interface HeaderState {
+    feature: boolean,
+    isLoading: boolean
+}
+
+class Header extends Component<HeaderProps, HeaderState> {
+    //appConfigRetriever: AppConfigRetriever = new AppConfigRetriever();
+    constructor(props: HeaderProps) {
+        super(props);
+        this.state = {
+            feature: false,
+            isLoading: true
+        };
+        //this.getFeatureFlag = this.getFeatureFlag.bind(this);
+    }
+
+    /*getFeatureFlag() {
+        this.appConfigRetriever.getFeature('demo', 'demo', 'demoConfig', 'demoFeatureFlag').then((feature: boolean) => {
+            this.setState({isLoading: false, feature})
+        }).catch((err) => {
+            console.error(err);
+            alert(err);
+            this.setState({isLoading: false});
+        })
+    }
+
+    componentDidMount() {
+        this.getFeatureFlag();
+    }*/
+
+    render() {
+
 
     if(this.props.data){
       var name = this.props.data.name;
       var occupation= this.props.data.occupation;
       var description= this.props.data.description;
 
-      var networks= this.props.data.social.map(function(network){
+      var networks= this.props.data.social.map(function(network: any){
         return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
       })
     }

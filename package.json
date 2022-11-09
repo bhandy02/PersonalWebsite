@@ -5,7 +5,7 @@
     "release": "yarn bootstrap && yarn build"
   },
   "dependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "^6.0.3"
   },
   "name": "PersonalWebsite"
 }

@@ -1,4 +1,4 @@
-import {App, Stack, StackProps} from 'monocdk';
+import {App, Stack, StackProps} from 'aws-cdk-lib';
 import {StaticWebsite} from './static-website';
 import {CodebuildWebsiteArtifactConfiguration} from './website-artifact-location-configuration';
 

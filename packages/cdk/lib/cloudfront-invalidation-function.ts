@@ -1,6 +1,7 @@
-import { Construct, Duration, CustomResource, CustomResourceProps } from 'monocdk';
-import { InlineCode, Runtime, SingletonFunction } from 'monocdk/aws-lambda';
-import { PolicyStatement } from 'monocdk/aws-iam';
+import { Duration, CustomResource, CustomResourceProps } from 'aws-cdk-lib';
+import {Construct} from 'constructs';
+import { InlineCode, Runtime, SingletonFunction } from 'aws-cdk-lib/aws-lambda';
+import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import dedent from 'ts-dedent';
 
 export interface CloudFrontInvalidationFunctionProps {
