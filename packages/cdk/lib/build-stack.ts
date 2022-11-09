@@ -102,7 +102,7 @@ export class BuildStack extends Stack {
         const buildStage = pipeline.addStage({ stageName: 'build' });
         const project = new PipelineProject(this, 'CodeBuildProject', {
             environment: {
-                buildImage: LinuxBuildImage.STANDARD_3_0,
+                buildImage: LinuxBuildImage.STANDARD_6_0,
                 computeType: ComputeType.SMALL
             }
         });
