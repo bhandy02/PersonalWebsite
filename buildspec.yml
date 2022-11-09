@@ -9,8 +9,6 @@ phases:
     commands:
       - yarn
   build:
-    runtime-versions:
-      nodejs: 16
     commands:
       - cd packages/personal-website
       - yarn install && yarn build
