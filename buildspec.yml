@@ -8,6 +8,9 @@ phases:
   pre_build:
     commands:
       - yarn
+  install:
+    runtime-versions:
+      nodejs: 16
   build:
     commands:
       - cd packages/personal-website
