@@ -11,6 +11,8 @@ phases:
   install:
     runtime-versions:
       nodejs: 16
+    commands:
+      - npm install aws-cdk -g
   build:
     commands:
       - cd packages/personal-website
