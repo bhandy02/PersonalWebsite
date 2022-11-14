@@ -35,8 +35,6 @@ export class StaticWebsite extends Construct {
             encryption: BucketEncryption.S3_MANAGED,
             blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
             versioned: true,
-            websiteIndexDocument: 'index.html',
-            websiteErrorDocument: 'index.html',
             removalPolicy: RemovalPolicy.RETAIN,
         });
 
@@ -77,12 +75,11 @@ export class StaticWebsite extends Construct {
             enableAcceptEncodingGzip: true,
             enableAcceptEncodingBrotli: true,
         });
-        const distribution = new Distribution(this, 'PersonalWebsiteDistribution', {
+        const distribution = new Distribution(this, 'StaticWebsiteDistribution', {
             defaultRootObject: 'index.html',
             httpVersion: HttpVersion.HTTP2,
             defaultBehavior: {
-                origin: new S3Origin(this.bucket,
-                    {originPath: copyFunction.destPath, originAccessIdentity: originAccessIdentity}),
+                origin: new S3Origin(this.bucket, {originPath: copyFunction.destPath, originAccessIdentity}),
                 allowedMethods: AllowedMethods.ALLOW_GET_HEAD_OPTIONS,
                 viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
                 cachedMethods: CachedMethods.CACHE_GET_HEAD_OPTIONS,
